@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div>
+        <h1>Passwords</h1>
+    </div>
+
+        {% for i in items %}
+            <table>
+                 <tr>
+                  <th>Site</th>
+                  <th>Enregistrer le</th>
+                  <th>Mot de passe enregistrer</th>
+                 </tr>
+                 <tr>
+                  <td>{{ i.site }}</td>
+                  <td>{{ i.time }}</td>
+                  <td>{{ i.passwords }}</td>
+                 </tr>
+            </table>
+            <a href="{% url 'deleterecord' i.id %}">
+                <button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
+            </a>
+
+    {% endfor %}
+
+{% endblock %}

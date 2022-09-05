@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <h1>Welcome django password generator</h1>
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            site<input type="text" name="site">
+            <input type="submit">
+        </form>
+    </div>
+
+    <div class="box-result-search">
+        {% for data in results %}
+            <table>
+             <tr>
+              <th>Site</th>
+              <th>Enregistrer le</th>
+              <th>Mot de passe enregistrer</th>
+             </tr>
+             <tr>
+              <td>{{ data.site }}</td>
+              <td>{{ data.time }}</td>
+              <td>{{ data.passwords }}</td>
+             </tr>
+            </table>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

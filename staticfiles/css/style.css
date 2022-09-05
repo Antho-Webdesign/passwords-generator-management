@@ -1,0 +1,100 @@
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+    padding: 30px;
+    margin-bottom: 50px;
+}
+.content {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.content > form:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin: 0 0 40px 0;
+}
+
+.box-pass-generate {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.passgenerate {
+  border: solid 1px;
+  padding: 10px;
+}
+
+.navbar > ul {
+  display: flex;
+}
+
+.title {
+  display: flex;
+  width: 50%;
+}
+
+.navbar {
+  display: flex;
+  width: auto;
+  justify-content: flex-end;
+}
+
+.header {
+  align-items: center;
+  display:flex;
+  justify-content: space-between;
+}
+
+
+/* Élément | http://127.0.0.1:8000/search */
+
+body > div:nth-child(4) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+div.result-search {
+  border: solid 1px;
+  padding: 20px;
+}
+
+.box-result-search {
+  width: 90%;
+}
+
+table {
+  border: solid 1px;
+  margin: 40px 0;
+}
+
+.form {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.navbar > ul > li {
+  margin: auto 10px;
+}
+
+a {
+  /* color: var(--bs-link-color); */
+  color: #fff;
+}
+
+tbody  {
+ padding: 10px !important;
+}
