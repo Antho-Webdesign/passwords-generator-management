@@ -3,11 +3,12 @@
 
 {% block content %}
 
-    <h1>Welcome django password generator</h1>
+    <h1 class="text-center">Welcome django password generator</h1>
     <div>
         <form method="POST">
             {% csrf_token %}
-            site<input type="text" name="site">
+            <label>Nom du site :</label>
+            <input type="text" name="site">
             <input type="submit">
         </form>
     </div>
@@ -18,7 +19,7 @@
              <tr>
               <th>Site</th>
               <th>Enregistrer le</th>
-              <th>Mot de passe enregistrer</th>
+              <th>Mot de passe généré</th>
              </tr>
              <tr>
               <td>{{ data.site }}</td>

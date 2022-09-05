@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
 import random
-from random import sample
 from .models import GenPass
 
 
@@ -11,7 +10,6 @@ def home(request):
         site = request.POST.get('site')
         if site == "":
             return render(request, 'generator/home.html')
-
         password_length = int(request.POST.get('length'))
         characters = "!@#$%^&**()_+"
         numbers = '1234567890'
