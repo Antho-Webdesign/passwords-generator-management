@@ -30,11 +30,16 @@ input {
   display: flex;
   width: 100%;
   justify-content: center;
+  margin: 50px auto;
+  font-size: 2em;
 }
 
 .passgenerate {
   border: solid 1px;
   padding: 10px;
+  font-size: 2em;
+  font-weight: bolder;
+
 }
 
 .navbar > ul {
@@ -76,7 +81,7 @@ div.result-search {
 
 table {
   border: solid 1px;
-  margin: 40px 0;
+  margin: 40px auto;
 }
 
 .form {
@@ -136,3 +141,8 @@ td {
   border: solid 1px;
   padding: 20px;
 }
+
+
+/* style.css | http://127.0.0.1:8000/static/css/style.css */
+
+
