@@ -1,0 +1,226 @@
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+    padding: 30px;
+    margin-bottom: 50px;
+}
+.content {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.content > form:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin: 0 0 70px 0;
+  height: 40px;
+}
+
+.box-pass-generate {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: 50px auto;
+  font-size: 2em;
+}
+
+.passgenerate {
+  border: solid 1px;
+  padding: 10px;
+  font-size: 2em;
+  font-weight: bolder;
+
+}
+
+.navbar > ul {
+  display: flex;
+}
+
+.title {
+  display: flex;
+  width: 50%;
+}
+
+.navbar {
+  display: flex;
+  width: auto;
+  justify-content: flex-end;
+}
+
+.header {
+  align-items: center;
+  display:flex;
+  justify-content: space-between;
+}
+
+body > div:nth-child(4) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+div.result-search {
+  border: solid 1px;
+  padding: 20px;
+}
+
+.box-result-search {
+  width: 90%;
+}
+
+table {
+  border: solid 1px;
+  margin: 40px auto;
+}
+
+.form {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.navbar > ul > li {
+  margin: auto 10px;
+}
+
+a {
+  color: #fff;
+}
+
+tbody  {
+ padding: 10px !important;
+}
+
+.content {
+  width: 90%;
+}
+
+.content > form {
+  width: 40%;
+  justify-content: center;
+  margin: auto;
+}
+
+.box-footer {
+  max-width: none;
+}
+
+
+.content {
+  height: 500px;
+}
+
+.btn-generer {
+  width: 50%;
+  justify-content: center;
+  display:flex;
+  margin: 50px auto;
+}
+
+label {
+  font-size: 1.3em;
+}
+
+.box-footer {
+  margin: 50px auto 0 auto;
+}
+
+td {
+  width: 30%;
+  text-align: center;
+  border: solid 1px;
+  padding: 20px;
+}
+
+
+/* style.css | http://127.0.0.1:8000/static/css/style.css */
+
+
+
+/* style.css | http://127.0.0.1:8000/static/css/style.css */
+
+.form {
+  justify-content: center;
+  margin: auto;
+}
+
+/* Élément | http://127.0.0.1:8000/register/ */
+
+.content-section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* bootstrap.min.css | https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css */
+
+fieldset {
+  /* min-width: 0; */
+  /* padding: 0; */
+  /* margin: 0; */
+  /* border: 0; */
+}
+
+/* Élément | http://127.0.0.1:8000/register/ */
+
+#div_id_username {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+/* Élément | http://127.0.0.1:8000/register/ */
+
+.controls {
+  display: flex;
+  flex-direction: column;
+}
+
+#id_email {
+ padding-right: 32px;
+ width: 100%;
+}
+
+
+
+
+/* profile */
+
+.media {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+}
+
+/* Élément | http://127.0.0.1:8000/profile */
+
+.rounded-circle {
+  width: 33%;
+  margin: auto;
+}
+
+/* bootstrap.min.css | https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css */
+
+.rounded-circle {
+  /* border-radius: 50% !important; */
+  border-radius: 50px;
+}
+
+/* Élément | http://127.0.0.1:8000/profile */
+
+.content-section > form:nth-child(2) {
+  width: 50%;
+  margin: auto;
+}
