@@ -190,3 +190,37 @@ fieldset {
  padding-right: 32px;
  width: 100%;
 }
+
+
+
+
+/* profile */
+
+.media {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+}
+
+/* Élément | http://127.0.0.1:8000/profile */
+
+.rounded-circle {
+  width: 33%;
+  margin: auto;
+}
+
+/* bootstrap.min.css | https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css */
+
+.rounded-circle {
+  /* border-radius: 50% !important; */
+  border-radius: 50px;
+}
+
+/* Élément | http://127.0.0.1:8000/profile */
+
+.content-section > form:nth-child(2) {
+  width: 50%;
+  margin: auto;
+}
