@@ -6,5 +6,5 @@ urlpatterns = [
     path('listall', listall, name="listall"),
     path('delete/<int:id>', deleterecord, name="deleterecord"),
     path('search', search, name="search"),
-    # path('profile', profile, name="profile"),
+
 ]

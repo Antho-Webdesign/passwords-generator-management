@@ -146,3 +146,47 @@ td {
 /* style.css | http://127.0.0.1:8000/static/css/style.css */
 
 
+
+/* style.css | http://127.0.0.1:8000/static/css/style.css */
+
+.form {
+  justify-content: center;
+  margin: auto;
+}
+
+/* Élément | http://127.0.0.1:8000/register/ */
+
+.content-section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* bootstrap.min.css | https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css */
+
+fieldset {
+  /* min-width: 0; */
+  /* padding: 0; */
+  /* margin: 0; */
+  /* border: 0; */
+}
+
+/* Élément | http://127.0.0.1:8000/register/ */
+
+#div_id_username {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+/* Élément | http://127.0.0.1:8000/register/ */
+
+.controls {
+  display: flex;
+  flex-direction: column;
+}
+
+#id_email {
+ padding-right: 32px;
+ width: 100%;
+}
