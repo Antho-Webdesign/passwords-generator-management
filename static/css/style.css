@@ -228,3 +228,7 @@ fieldset {
 #logo {
  width: 10%;
 }
+
+.gg-font {
+  font-family: 'IBM Plex Mono', monospace;
+}
