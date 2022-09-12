@@ -227,9 +227,6 @@ fieldset {
  width: 10%;
 }
 
-
-/* Élément | http://127.0.0.1:8000/search */
-
 .form-search {
   display: flex;
   flex-direction: column;
