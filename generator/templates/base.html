@@ -26,18 +26,28 @@
                 </li>
 
                 <li>
-                    <a href="{% url 'listall' %}">Coffre fort</a>
+                    <a href="{% url 'listall' %}">Mon coffre fort</a>
                 </li>
                 <li>
-                    <a href="{% url 'search' %}">Chercher</a>
+                    <a href="{% url 'search' %}">Rechercher</a>
                 </li>
 
                 {% if user.is_authenticated %}
-                    <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a> <!-- { url 'logout' } -->
-                    <a class="nav-link" href="{% url 'profile' %}">Mon profil</a> <!-- { url 'profile' } -->
+                    <li>
+                        <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a> <!-- { url 'logout' } -->
+                    </li>
+
+                    <li>
+                        <a class="nav-link" href="{% url 'profile' %}">Mon profil</a> <!-- { url 'profile' } -->
+                    </li>
                 {% else %}
-                    <a class="nav-link" href="{% url 'login' %}">Connexion</a> <!-- { url 'login' } -->
-                    <a class="nav-link" href="{% url 'register' %}">Inscription</a> <!-- { url 'register' } -->
+                    <li>
+                        <a class="nav-link" href="{% url 'login' %}">Connexion</a> <!-- { url 'login' } -->
+                    </li>
+
+                    <li>
+                        <a class="nav-link" href="{% url 'register' %}">Inscription</a> <!-- { url 'register' } -->
+                    </li>
                 {% endif %}
 
             </ul>
@@ -49,14 +59,30 @@
 
     <div class="container box-footer">
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <p class="col-md-4 mb-0 text-muted">&copy; 2022 Company, Inc</p>
+        <p class="col-md-4 mb-0 text-muted">&copy; 2022 Antho-WebDesign, Inc</p>
 
         <ul class="nav col-md-4 justify-content-end">
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+
+          <li class="nav-item">
+              <a href="{% url 'home' %}" class="nav-link px-2 text-muted">Home</a>
+          </li>
+
+          <li class="nav-item">
+              <a href="{% url 'listall' %}" class="nav-link px-2 text-muted">Coffre-fort</a>
+          </li>
+
+          <li class="nav-item">
+              <a href="{% url 'profile' %}" class="nav-link px-2 text-muted">Profile</a>
+          </li>
+
+          <li class="nav-item">
+              <a href="{% url 'search' %}" class="nav-link px-2 text-muted">Rechercher</a>
+          </li>
+
+          <li class="nav-item">
+              <a href="#" class="nav-link px-2 text-muted">About</a>
+          </li>
+
         </ul>
       </footer>
     </div>
