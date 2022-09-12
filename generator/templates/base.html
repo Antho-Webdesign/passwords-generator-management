@@ -34,19 +34,19 @@
 
                 {% if user.is_authenticated %}
                     <li>
-                        <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a> <!-- { url 'logout' } -->
+                        <a href="{% url 'logout' %}">Déconnexion</a> <!-- { url 'logout' } -->
                     </li>
 
                     <li>
-                        <a class="nav-link" href="{% url 'profile' %}">Mon profil</a> <!-- { url 'profile' } -->
+                        <a href="{% url 'profile' %}">Mon profil</a> <!-- { url 'profile' } -->
                     </li>
                 {% else %}
                     <li>
-                        <a class="nav-link" href="{% url 'login' %}">Connexion</a> <!-- { url 'login' } -->
+                        <a href="{% url 'login' %}">Connexion</a> <!-- { url 'login' } -->
                     </li>
 
                     <li>
-                        <a class="nav-link" href="{% url 'register' %}">Inscription</a> <!-- { url 'register' } -->
+                        <a href="{% url 'register' %}">Inscription</a> <!-- { url 'register' } -->
                     </li>
                 {% endif %}
 
