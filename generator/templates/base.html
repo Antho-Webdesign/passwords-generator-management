@@ -42,6 +42,12 @@
                         <a href="{% url 'logout' %}">Déconnexion</a> <!-- { url 'logout' } -->
                     </li>
 
+                    <!--
+                    <li>
+                        <i class="fa-solid fa-user"></i>
+                    </li>
+                    -->
+
                     <li>
                         <a href="{% url 'profile' %}">Mon profil</a> <!-- { url 'profile' } -->
                     </li>
@@ -63,33 +69,39 @@
     {% endblock %}
 
     <div class="container box-footer">
-            <div>
-
-        <span class="fa-regular fa-house"></span>
-    </div>
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
         <p class="col-md-4 mb-0 text-muted">&copy; 2022 Antho-WebDesign, Inc</p>
 
         <ul class="nav col-md-4 justify-content-end">
 
           <li class="nav-item">
-              <a href="{% url 'home' %}" class="nav-link px-2 text-muted">Home</a>
+              <a href="{% url 'home' %}" class="nav-link px-2 text-muted">
+                  <i class="fa-solid fa-house"></i>
+              </a>
           </li>
 
           <li class="nav-item">
-              <a href="{% url 'listall' %}" class="nav-link px-2 text-muted">Coffre-fort</a>
+              <a href="{% url 'listall' %}" class="nav-link px-2 text-muted">
+                  <i class="fa-solid fa-unlock-keyhole"></i>
+              </a>
           </li>
 
           <li class="nav-item">
-              <a href="{% url 'profile' %}" class="nav-link px-2 text-muted">Profile</a>
+              <a href="{% url 'profile' %}" class="nav-link px-2 text-muted">
+                  <i class="fa-solid fa-user"></i>
+              </a>
           </li>
 
           <li class="nav-item">
-              <a href="{% url 'search' %}" class="nav-link px-2 text-muted">Rechercher</a>
+              <a href="{% url 'search' %}" class="nav-link px-2 text-muted">
+                  <i class="fa-solid fa-search"></i>
+              </a>
           </li>
 
           <li class="nav-item">
-              <a href="#" class="nav-link px-2 text-muted">About</a>
+              <a href="#" class="nav-link px-2 text-muted">
+                  <i class="fa-solid fa-circle-info"></i>
+              </a>
           </li>
 
         </ul>
