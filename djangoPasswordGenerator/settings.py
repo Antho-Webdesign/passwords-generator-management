@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'generator',
     'users',
     'crispy_forms',
+    'fontawesomefree',
 ]
 
 MIDDLEWARE = [

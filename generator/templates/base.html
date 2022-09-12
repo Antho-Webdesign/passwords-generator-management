@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" type="text/css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet">
 </head>
+
 <body class="bg-dark text-light">
     <header class="header text-light" style="background: black">
         <div class="title">
@@ -23,12 +25,14 @@
         <nav class="navbar nav">
             <ul>
                 <li>
-                    <a href="{% url 'home' %}">Home</a>
+                    <!--<i class="fa fa-house"></i>-->
+                    <a href="{% url 'home' %}">Accueil</a>
                 </li>
 
                 <li>
-                    <a href="{% url 'listall' %}">Mon coffre fort</a>
+                    <a href="{% url 'listall' %}">Coffre-fort</a>
                 </li>
+
                 <li class="me-5">
                     <a href="{% url 'search' %}">Rechercher</a>
                 </li>
@@ -54,12 +58,15 @@
             </ul>
         </nav>
     </header>
-
      
     {% block content %}
     {% endblock %}
 
     <div class="container box-footer">
+            <div>
+
+        <span class="fa-regular fa-house"></span>
+    </div>
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
         <p class="col-md-4 mb-0 text-muted">&copy; 2022 Antho-WebDesign, Inc</p>
 

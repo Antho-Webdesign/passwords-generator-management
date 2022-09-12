@@ -1,6 +1,8 @@
 asgiref==3.5.2
 Django==4.1.1
 django-crispy-forms==1.14.0
+fontawesome==5.10.1.post1
+fontawesome-free==5.15.4
 image==1.5.33
 Pillow==9.2.0
 six==1.16.0
