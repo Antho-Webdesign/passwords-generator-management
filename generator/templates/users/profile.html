@@ -7,29 +7,29 @@
 
     <!-- ========= Affichage des Informations ========= -->
     <div class="content-section">
+        <h2 class="text-center mb-5">Mes informations</h2>
+            <div class="media">
+                <img class="rounded-circle account-img mb-4" src="{{ user.profile.image.url }}" alt="">
+                <div class="media-body">
+                    <table>
+                        <tr>
+                            <td>Pseudo</td>
+                            <td>Email</td>
+                            <td>Nom</td>
+                            <td>Prenom</td>
+                        </tr>
 
-        <div class="media">
-            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" alt="">
-            <div class="media-body">
-                <h2 class="account-heading">{{ user.username }}</h2>
-                <p class="text-secondary">{{ user.email }}</p>
+                        <tr  class="font-italic">
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.first_name }}</td>
+                            <td>{{ user.last_name }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <a class="btn btn-info" href="{% url 'updt_profile' %}">
+                    <strong>Modifier mon profile</strong>
+                </a>
             </div>
-            <a class="btn btn-warning" href="{% url 'password_reset' %}">Modifier mon mot de passe</a>
-        </div>
-
-        <!-- ========= FORMULAIRE ========= -->
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Modifier mes informations</legend>
-                {{ u_form|crispy }}
-                {{ p_form|crispy }}
-            </fieldset>
-
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Modifier</button>
-            </div>
-        </form>
-
     </div>
 {% endblock content %}

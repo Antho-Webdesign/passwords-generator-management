@@ -234,3 +234,10 @@ fieldset {
   justify-content: center;
   margin: auto;
 }
+
+
+/* Élément | http://127.0.0.1:8000/listall */
+
+.navbar > ul:nth-child(1) > li:nth-child(3) {
+  margin-right: 80px !important;
+}
