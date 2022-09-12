@@ -206,14 +206,10 @@ fieldset {
   margin: auto;
 }
 
-/* Élément | http://127.0.0.1:8000/profile */
-
 .rounded-circle {
   width: 33%;
   margin: auto;
 }
-
-/* bootstrap.min.css | https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css */
 
 .rounded-circle {
   /* border-radius: 50% !important; */
@@ -231,6 +227,13 @@ fieldset {
  width: 10%;
 }
 
-.gg-font {
-  font-family: 'IBM Plex Mono', monospace;
+
+/* Élément | http://127.0.0.1:8000/search */
+
+.form-search {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  justify-content: center;
+  margin: auto;
 }

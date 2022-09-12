@@ -3,30 +3,33 @@
 
 {% block content %}
 
-    <h1 class="text-center">Welcome django password generator</h1>
+    <h1 class="text-center">Rechercher un mot de passe</h1>
     <div>
-        <form method="POST">
+        <form method="POST" class="form-search">
             {% csrf_token %}
-            <label>Nom du site :</label>
-            <input type="text" name="site">
-            <input type="submit">
+            <label for="site">Pour le site :</label>
+                <input type="text" name="site" id="site">
+            <input type="submit" value="Rechercher">
         </form>
     </div>
 
     <div class="box-result-search">
         {% for data in results %}
+
             <table>
-             <tr>
-              <th>Site</th>
-              <th>Enregistrer le</th>
-              <th>Mot de passe généré</th>
-             </tr>
-             <tr>
-              <td>{{ data.site }}</td>
-              <td>{{ data.time }}</td>
-              <td>{{ data.passwords }}</td>
-             </tr>
+                <tr>
+                    <th>Site</th>
+                    <th>Enregistrer le</th>
+                    <th>Mot de passe généré</th>
+                </tr>
+
+                <tr>
+                    <td>{{ data.site }}</td>
+                    <td>{{ data.time }}</td>
+                    <td>{{ data.passwords }}</td>
+                </tr>
             </table>
+
         {% endfor %}
     </div>
 
