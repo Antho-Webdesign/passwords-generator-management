@@ -11,15 +11,15 @@
                 <legend class="border-bottom mb-4">Rejoignez la communauté</legend>
                 {{ form|crispy }}
             </fieldset>
-            <div class="form-group">
+
+            <div class="form-group" style="display: flex; justify-content: space-around; align-items: center;">
                 <button class="btn btn-outline-info" type="submit">S'inscrire</button>
+                <small class="text-muted">Déja inscrit ?
+                    <a class="ml-2" href="{% url 'login' %}">Connexion</a>
+                </small>
             </div>
+
         </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                Déja inscrit ?
-                <a class="ml-2" href="{% url 'login' %}">Connexion</a>
-            </small>
-        </div>
+
     </div>
 {% endblock content %}

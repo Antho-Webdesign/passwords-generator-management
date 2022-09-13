@@ -10,7 +10,7 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, 'Your account has been created! You are now able to log in')
+            messages.success(request, 'Votre compte a été créé! Vous pouvez maintenant vous connecter')
 
             return redirect('login')
     else:
@@ -27,7 +27,7 @@ def profile(request):
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
-            messages.success(request, 'Your account has been updated!')
+            messages.success(request, 'Votre compte a été mis à jour !')
 
             return redirect('profile')
     else:
@@ -47,7 +47,7 @@ def updt_profile(request):
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
-            messages.success(request, 'Your account has been updated!')
+            messages.success(request, 'Votre compte a été mis à jour !')
 
             return redirect('profile')
     else:
