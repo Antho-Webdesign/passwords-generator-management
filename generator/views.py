@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 import random
 from .models import GenPass
@@ -29,6 +30,7 @@ def home(request):
     return render(request, "generator/home.html")
 
 
+@login_required
 def listall(request):
     context = {
         'items': GenPass.objects.all()
