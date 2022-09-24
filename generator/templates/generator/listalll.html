@@ -2,12 +2,13 @@
 {% load static %}
 
 {% block content %}
-
     <div>
         <h1 class="text-center">Mon coffre fort</h1>
     </div>
 
-    {% for i in items %}
+    {% if user != 'user.username' %}
+
+        {% for i in items %}
         <table>
             <tr>
                 <td>Site</td>
@@ -28,5 +29,6 @@
             </tr>
         </table>
     {% endfor %}
+{% endif %}
 
 {% endblock %}

@@ -33,7 +33,7 @@ def home(request):
 @login_required
 def listall(request):
     context = {
-        'items': GenPass.objects.all()
+        'items': GenPass.objects.filter(user=request.user)
     }
     return render(request, 'generator/listalll.html', context)
 
