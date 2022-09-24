@@ -40,8 +40,7 @@ def listall(request):
 
 def search(request):
     if request.method == "POST":
-        query = request.POST.get('site', None)
-        if query:
+        if query := request.POST.get('site', None):
             results = GenPass.objects.filter(site__contains=query)
             return render(request, 'generator/search.html', {'results': results})
     return render(request, 'generator/search.html')
