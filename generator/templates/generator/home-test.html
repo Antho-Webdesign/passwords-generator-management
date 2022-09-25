@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div>
+        <h1 class="text-center">Generer un mdp</h1>
+    </div>
+
+    <div class="content">
+        <form method="POST">
+            {% csrf_token %}
+            <label for="site">Nom du site :</label>
+                <input type="text" name="site" id="site">
+
+            <label for="lenght">Nombre de caractères :</label>
+                <input type="text" name="length" id="lenght" placeholder="length of password">
+
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="uppercase" id="uppercase">
+              <label for="uppercase" class="form-check-label">
+                UpperCase
+              </label>
+                <br>
+              <input class="form-check-input" type="checkbox" name="numbers" id="numbers">
+              <label for="numbers" class="form-check-label">
+                Numbers
+              </label>
+                <br>
+              <input class="form-check-input" type="checkbox" name="special" id="special">
+              <label  for="special" class="form-check-label">
+                Special
+              </label>
+            </div>
+            <input class="btn btn-success btn-generer" type="submit" value="Générer">
+        </form>
+    </div>
+
+{% endblock %}
