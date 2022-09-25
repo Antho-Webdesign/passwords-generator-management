@@ -49,3 +49,8 @@ def deleterecord(request, id):
     obj = get_object_or_404(GenPass, id=id)
     obj.delete()
     return redirect('listall')
+
+
+def home_test(request):
+    return render(request, 'generator/home-test.html')
+
