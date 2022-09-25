@@ -21,11 +21,13 @@
                 <td>{{ i.site }}</td>
                 <td>{{ i.time }}</td>
                 <td>{{ i.passwords }}</td>
+
                 <td>
                     <a href="{% url 'deleterecord' i.id %}">
                         <button type="button" class="btn btn-danger btn-sm">Supprimer</button>
                     </a>
                 </td>
+
             </tr>
         </table>
     {% endfor %}
