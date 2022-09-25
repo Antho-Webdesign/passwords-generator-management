@@ -17,10 +17,9 @@ def home(request):
             context = {'message': message}
             return render(request, 'generator/home.html', context)
         else:
-            characters = "!@#$%^&**()_+"
             numbers = '1234567890'
             small_letters = "qwertyuioplkjhgfdsazxcvbnm"
-            prep = characters + numbers + small_letters + "QWERTYUIOPASDFGHJKLMNBVCXZ"
+            prep = f"!@#$%^&**()_+{numbers}{small_letters}QWERTYUIOPASDFGHJKLMNBVCXZ"
             passwd = ''.join(random.sample(prep, k=password_length))
             print(passwd)
             p = GenPass.objects.create(site=site, passwords=passwd)
