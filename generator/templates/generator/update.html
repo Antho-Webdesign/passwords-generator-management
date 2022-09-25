@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div>
+        <h1 class="text-center">Modifier un mdp</h1>
+    </div>
+
+    <div class="content">
+        <form method="POST">
+            {% csrf_token %}
+            <label for="site">Nom du site :</label>
+                <input type="text" name="site" id="site">
+
+            <label for="lenght">Nombre de caractères :</label>
+                <input type="text" name="length" id="lenght" placeholder="length of password">
+
+            <input class="btn btn-success btn-generer" type="submit" value="Générer">
+        </form>
+    </div>
+
+{% endblock %}
