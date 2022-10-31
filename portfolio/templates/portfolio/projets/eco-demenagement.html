@@ -1,0 +1,98 @@
+{% extends 'portfolio/base_pr.html' %}
+{% load static %}
+
+{% block content %}
+  <main id="main" data-aos="fade" data-aos-delay="1500">
+
+    <!-- ======= End Page Header ======= -->
+    <div class="page-header d-flex align-items-center">
+      <div class="container position-relative">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h2>€co-déménagement</h2>
+
+            <a class="cta-btn" href="{% url 'contact' %}">Lien ici !</a>
+
+          </div>
+        </div>
+      </div>
+    </div><!-- End Page Header -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row gy-4 justify-content-center">
+          <div class="col-lg-6">
+              {% load static %}
+              <img src="{% static 'images/portfolio/eco.png' %}" class="testimonial-img" alt="">
+          </div>
+          <div class="col-lg-6 content">
+            <h2>Professionel du transport de bien</h2>
+            <p class="fst-italic py-3">
+              " Jeune entrepreneur serieux avec une équipe motivée et passionnée, Éco déménagement est le n°1 du transport de biens dans la région PACA avec divers véhicules selon vos besoins ainsi que le devis en ligne et le calculateur de volume pour un gain de temps
+                        assuré !!".
+            </p>
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li>
+                      <i class="bi bi-chevron-right"></i> <strong>Création le:</strong> <span>1 Avril 2022</span>
+                  </li>
+
+                  <li>
+                      <i class="bi bi-chevron-right"></i> <strong>Lien du site:</strong> <span>www.example.com</span>
+                  </li>
+
+                  <li>
+                      <i class="bi bi-chevron-right"></i> <strong>Categorie:</strong> <span>Site vitrinne</span>
+                  </li>
+
+                  <li>
+                      <i class="bi bi-chevron-right"></i> <strong>Status:</strong> <span>En cours de développement</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+              <br/>
+            <h2>Languages utilisés: </h2>
+              <div class="box-languages">
+                  {% load static %}
+
+                  <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                      <div class="icon-box">
+                          <img src="{% static 'images/languages/html-5.svg' %}" alt="PyCharm">
+                      </div>
+                  </div>
+
+                  <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                      <div class="icon-box">
+                          <img src="{% static 'images/languages/css3.svg' %}" alt="PyCharm">
+                      </div>
+                  </div>
+
+                  <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                      <div class="icon-box">
+                          <img src="{% static 'images/languages/php.svg' %}" alt="PyCharm">
+                      </div>
+                  </div>
+
+                  <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                      <div class="icon-box">
+                          <img src="{% static 'images/languages/javascript.svg' %}" alt="PyCharm">
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End About Section -->
+      <!-- btn retour -->
+
+      <a href="{% url 'index_portfolio' %}" class="btn btn-warning">
+          Retour
+      </a>
+
+  </main><!-- End #main -->
+
+{% endblock %}

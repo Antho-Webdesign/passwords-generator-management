@@ -1,0 +1,131 @@
+{% extends 'portfolio/base_pr.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+
+.row > div > ul {
+  width: 100%;
+}
+
+.row:nth-child(3) > div:nth-child(1) {
+  width: 100%;
+}
+
+a.btn:nth-child(3) {
+ float: right;
+ margin: auto 200px;
+}
+
+.box {
+ display: flex;
+ justify-content: space-around;
+ margin: 150px auto;
+}
+
+/* Élément | http://127.0.0.1:8000/test/project/pizza/details */
+
+.btn {
+  width: 25%;
+}
+
+
+</style>
+
+  <main id="main" data-aos="fade" data-aos-delay="1500">
+
+    <!-- ======= End Page Header ======= -->
+    <div class="page-header d-flex align-items-center">
+      <div class="container position-relative">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h2>{{ project.title }}</h2>
+
+            <a class="cta-btn" href="{{ project.project_url }}" target="blank">Lien ici !</a>
+
+          </div>
+        </div>
+      </div>
+    </div><!-- End Page Header -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row gy-4 justify-content-center">
+          <div class="col-lg-6">
+
+              <img src="{{ project.project_thumbnail.url }}" class="testimonial-img" alt="">
+          </div>
+          <div class="col-lg-6 content">
+            <h2>Professionel du transport de bien</h2>
+            <p class="fst-italic py-3">
+              {{ project.description }}
+            </p>
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li>
+                      <i class="bi bi-chevron-right"></i> <strong>Création le:</strong> <span>{{ project.date_created_on }}</span>
+                  </li>
+
+                  <li>
+                      <i class="bi bi-chevron-right"></i> <strong>Lien du site:</strong> <span>{{ project.project_url }}</span>
+                  </li>
+
+                  <li>
+                      <i class="bi bi-chevron-right"></i> <strong>Categorie:</strong> <span>{{ project.category_name }}</span>
+                  </li>
+
+                  <li>
+                      <i class="bi bi-chevron-right"></i> <strong>Status:</strong> <span>{{ project.project_status }}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+              <br/>
+            <h2>Languages utilisés: </h2>
+              <div class="box-languages">
+
+                  <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                      <div class="icon-box">
+                          <img src="{% static 'images/languages/html-5.svg' %}" alt="PyCharm">
+                      </div>
+                  </div>
+
+                  <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                      <div class="icon-box">
+                          <img src="{% static 'images/languages/css3.svg' %}" alt="PyCharm">
+                      </div>
+                  </div>
+
+                  <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                      <div class="icon-box">
+                          <img src="{% static 'images/languages/php.svg' %}" alt="PyCharm">
+                      </div>
+                  </div>
+
+                  <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                      <div class="icon-box">
+                          <img src="{% static 'images/languages/javascript.svg' %}" alt="PyCharm">
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End About Section -->
+      <!-- btn retour -->
+      <div class="box">
+          <a href="{% url 'projet_web' %}" class="btn btn-warning boutons">
+              Retour liste {{ project.category_name }}
+          </a>
+
+          <a href="{% url 'list_categories' %}" class="btn btn-danger boutons">
+              liste des categories
+          </a>
+      </div>
+  </main><!-- End #main -->
+
+{% endblock %}

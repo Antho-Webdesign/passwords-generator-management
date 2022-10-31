@@ -1,0 +1,259 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio</title>
+    <!--==== fontawesome ====-->
+    <script src="https://kit.fontawesome.com/a2a69c8064.js" crossorigin="anonymous"></script>
+    <!--==== style ====-->
+    <link  rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    {% comment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'build/css/home.css' %}">
+    {% endcomment %}
+</head>
+
+<body class="bg-dark">
+<!-- ======= Header ======= -->
+<header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+      <a href="#" class="logo d-flex align-items-center  me-auto me-lg-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <i class="bi bi-camera"></i>
+        <h1>Antho WebDev</h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li>
+              {% comment %}
+              <a href="{% url 'index_portfolio' %}" class="active">
+                  Home
+              </a>
+                {% endcomment %}
+          </li>
+
+            <!-- ===== Dropdown ===== -->
+          <li class="dropdown">
+
+              <a href="{% url 'category_list' %}">
+                  <span>
+                      Category Projets
+                  </span>
+              <i class="bi bi-chevron-down dropdown-indicator"></i>
+          </a>
+            <ul>
+                <!-- eco déménagement -->
+                {% for project in object_list %}
+                    <li>
+                        <a href="{% url 'project_category_list' project.slug %}">
+                            {{ project.category.title }}
+                        </a>
+                    </li>
+                {% endfor %}
+                <!-- End Dropdown -->
+
+                <!-- ===== sub Dropdown ===== -->
+                 <li class="dropdown">
+                    <a href="#">
+                        <span>Tout les Projets -></span>
+                        <i class="bi bi-chevron-down dropdown-indicator"></i>
+                    </a>
+
+                    <ul>
+                        {% for projects in project_list %}
+                            <li>
+                            {% comment %}
+                                <a href="{% url 'projet_web' %}">
+                                    {{ projects.title }}
+                                </a>
+                            {% endcomment %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+
+            </ul>
+          </li>
+          <!-- ===== End sub Dropdown ===== -->
+          <li>
+              <a href="#">Services</a>
+          </li>
+          <li>
+              <a href="#">Contact</a>
+          </li>
+        </ul>
+      </nav>
+      <!-- .navbar -->
+
+      <div class="header-social-links">
+
+          <a href="https://github.com/Antho-Webdesign" class="github">
+              <i class="fa fa-2x fa-github"></i>
+          </a>
+
+          <a href="https://github.com/Antho-Webdesign" class="linkedin">
+              <i class="fa fa-2x fa-linkedin"></i>
+          </a>
+      </div>
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+</header>
+<!-- .End Header -->
+{% block content %}
+{% endblock %}
+
+<!-- separateur -->
+<div class="separateur"></div>
+
+<!-- ======= Footer ======= -->
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Antho-Webdesign" role="button">
+          <i class="fab fa-3x fa-linkedin-in"></i>
+      </a>
+
+      <!-- Github -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Antho-Webdesign" role="button">
+          <i class="fab fa-3x fa-github"></i>
+      </a>
+
+    </section>
+    <!-- Section: Social media -->
+
+
+
+    <!-- Section: Text -->
+    <section class="mb-4">
+      <p>
+        Liens de nos partenaires
+      </p>
+    </section>
+    <!-- Section: Text -->
+
+    <!-- Section: Links -->
+    <section class="">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Evènements</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#" class="text-white">
+                  LGNE
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="text-white">
+                  Close2me
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="text-white">
+                  Link 3
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="text-white">
+                  Link 4
+              </a>
+            </li>
+
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Tutos youtube</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="https://www.youtube.com/c/SimpleTechProd" class="text-white">SimpleTech</a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/c/Formationvid%C3%A9o8" class="text-white">Formation vidéo</a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/c/Docstring" class="text-white">Docstring</a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/c/FromScratchD%C3%A9veloppementWeb" class="text-white">From Scratch</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Tuto écrits</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#" class="text-white">Link 1</a>
+            </li>
+            <li>
+              <a href="#" class="text-white">Link 2</a>
+            </li>
+            <li>
+              <a href="#" class="text-white">Link 3</a>
+            </li>
+            <li>
+              <a href="#" class="text-white">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Promotions</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#" class="text-white">Link 1</a>
+            </li>
+            <li>
+              <a href="#" class="text-white">Link 2</a>
+            </li>
+            <li>
+              <a href="#" class="text-white">Link 3</a>
+            </li>
+            <li>
+              <a href="#" class="text-white">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </section>
+    <!-- Section: Links -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Copyright:
+    <a class="text-white" href="#">Antho WebDesign</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+</body>
+
+</html>

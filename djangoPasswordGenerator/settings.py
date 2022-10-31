@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'users',
     'crispy_forms',
     'fontawesomefree',
+    'portfolio.apps.PortfolioConfig',
 ]
 
 MIDDLEWARE = [

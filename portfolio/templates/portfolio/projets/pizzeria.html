@@ -1,0 +1,96 @@
+{% extends 'portfolio/base_pr.html' %}
+{% load static %}
+
+{% block content %}
+    <main id="main" data-aos="fade" data-aos-delay="1500">
+
+        <!-- ======= End Page Header ======= -->
+        <div class="page-header d-flex align-items-center">
+          <div class="container position-relative">
+            <div class="row d-flex justify-content-center">
+              <div class="col-lg-6 text-center">
+                <h2>Pizzeria</h2>
+
+                <a class="cta-btn" href="#">Lien ici !</a>
+
+              </div>
+            </div>
+          </div>
+        </div><!-- End Page Header -->
+
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+          <div class="container">
+
+            <div class="row gy-4 justify-content-center">
+              <div class="col-lg-6">
+                  {% load static %}
+                  <img src="{% static 'images/portfolio/pizzeria.jpg' %}" class="testimonial-img" alt="">
+              </div>
+              <div class="col-lg-6 content">
+                <h2>Pizza cuite au feu de bois</h2>
+                <p class="fst-italic py-3">
+                  " La pizzeria Jenini à Pontcharra propose de délicieuses pizzas cuites au feu de bois ".
+                </p>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <ul>
+                      <li>
+                          <i class="bi bi-chevron-right"></i> <strong>Création le:</strong> <span>12 Juin 2019</span>
+                      </li>
+
+                      <li>
+                          <i class="bi bi-chevron-right"></i> <strong>Lien du site:</strong> <span>Non publique</span>
+                      </li>
+
+                      <li>
+                          <i class="bi bi-chevron-right"></i> <strong>Categorie:</strong> <span>Site vitrinne</span>
+                      </li>
+
+                      <li>
+                          <i class="bi bi-chevron-right"></i> <strong>Status:</strong> <span>En cours de développement</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                  <br/>
+                  <h2>Languages utilisés: </h2>
+                      <div class="box-languages">
+                          {% load static %}
+
+                          <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                              <div class="icon-box">
+                                  <img src="{% static 'images/languages/html-5.svg' %}" alt="PyCharm">
+                              </div>
+                          </div>
+
+                          <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                              <div class="icon-box">
+                                  <img src="{% static 'images/languages/css3.svg' %}" alt="PyCharm">
+                              </div>
+                          </div>
+
+                          <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                              <div class="icon-box">
+                                  <img src="{% static 'images/languages/php.svg' %}" alt="PyCharm">
+                              </div>
+                          </div>
+
+                          <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                              <div class="icon-box">
+                                  <img src="{% static 'images/languages/javascript.svg' %}" alt="PyCharm">
+                              </div>
+                          </div>
+                      </div>
+              </div>
+            </div>
+          </div>
+        </section><!-- End About Section -->
+          <!-- btn retour -->
+
+        <a href="{% url 'index_portfolio' %}" class="btn btn-warning">
+            Retour
+        </a>
+  </main><!-- End #main -->
+
+{% endblock %}

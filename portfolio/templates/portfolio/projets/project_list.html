@@ -1,0 +1,117 @@
+{% extends 'portfolio/base_pr.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Boucle sur les projets -->
+<style>
+.box {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 100%;
+
+}
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.card__content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+ text-align: center;
+ margin: 80px auto;
+}
+
+</style>
+    <div class="title">
+        <h1>Liste de mes projets</h1>
+    </div>
+    {% for project in project_list %}
+        <div class="card">
+
+                <img class="animate" src="{{ project.project_image }}" alt="img" style="height: 100%; margin: 0; padding: 0;"/>
+                <div class="card__content">
+
+                    <h2 class="card__title animate text-dark">
+                        <a href="javascript:" class="text-dark">{{ project.project_name }}</a>
+                    </h2>
+                    <p class="text-dark">
+                        {{ project.project_description }}
+                    </p>
+                </div>
+                    <button class="card__btn">
+                        <a href="{{ project.project_link }}"><!-- TODO : Lien vers la page liste site vitrine -->
+                            <i class="fa fa-arrow-right fa-fw"></i>
+                        </a>
+                    </button>
+                </div>
+    {% endfor %}
+
+
+        <div class="box">
+            <div class="card">
+
+                <img class="animate" src="{% static 'images/portfolio/liste/site-vitrine.jpg' %}" alt="img" style="height: 100%; margin: 0; padding: 0;"/>
+                <div class="card__content">
+
+                    <h2 class="card__title animate text-dark">
+                        <a href="javascript:" class="text-dark">Sites vitrines {{ project.project_name }}</a>
+                    </h2>
+                    <p class="text-dark">
+                        " Un site vitrine permet à une entreprise (ou une association) de présenter ses produits ou services. Il est purement informatif."
+                    </p>
+                </div>
+                    <button class="card__btn">
+                        <a class="btn btn-warning" href="{{ project_details.get_absolute_url }}">Détails du produit<!-- TODO : Lien vers la page liste site vitrine -->
+                            <i class="fa fa-arrow-right fa-fw"></i>
+                        </a>
+                    </button>
+                </div>
+
+            <div class="card">
+                <img class="animate" src="{% static 'images/portfolio/liste/applications-web.jpg' %}" alt="img" style="height: 100%; margin: 0; padding: 0;"/>
+                <div class="card__content">
+
+                    <h2 class="card__title animate text-dark">
+                        <a href="javascript:" class="text-dark">Applications Web</a>
+                    </h2>
+                    <p class="text-dark">
+                        " En informatique, une application web (aussi appelée web application,
+                        de l'anglais et français) est une application manipulable directement en ligne grâce à un navigateur web
+                        et qui ne nécessite donc pas d'installation sur les machines clientes, contrairement aux applications mobiles. "
+                    </p>
+                </div>
+                    <button class="card__btn">
+                        <a href="#"><!-- TODO : Lien vers la page liste application web -->
+                            <i class="fa fa-arrow-right fa-fw"></i>
+                        </a>
+                    </button>
+                </div>
+
+            <div class="card">
+                <img class="animate" src="{% static 'images/portfolio/liste/applications-mobiles.jpg' %}" alt="img" style="height: 100%; margin: 0; padding: 0;"/>
+                <div class="card__content">
+
+                    <h2 class="card__title animate text-dark">
+                        <a href="javascript:" class="text-dark">Applications Mobiles</a>
+                    </h2>
+                    <p class="text-dark">
+                        " Une application mobile est un logiciel applicatif développé pour un appareil électronique mobile,
+                        tel qu'un assistant personnel, un téléphone portable, un smartphone, un baladeur numérique, une tablette tactile. "
+                    </p>
+                </div>
+                    <button class="card__btn">
+                        <a href="#"><!-- TODO : Lien vers la page liste application mobile -->
+                            <i class="fa fa-arrow-right fa-fw"></i>
+                        </a>
+                    </button>
+                </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'base_details.html' %}
+{% load static %}
+
+{% block content %}
+    <main id="main" data-aos="fade" data-aos-delay="1500">
+    <div id="retour-a-portfolio">
+        <h1><a href="{% url 'index' %}">Retour Acceuil</a></h1>
+    </div>
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <article id="portfolio">
+
+        <figure>
+            <img src="{% static 'images/cv_img/portfolio.png' %}" alt="" />
+        </figure>
+        <section>
+            <div>
+                <h1>Bienvenue</h1>
+                <p>Scroller pour découvrir</p>
+            </div>
+        </section>
+
+        <figure>
+            <img src="{% static 'images/cv_img/lacordeenumerique.png' %}" alt="" />
+        </figure>
+        <section>
+            <div>
+                <h2>LA CORDÉE NUMÉRIQUE</h2>
+                <p><a href='lacordeenumerique.html'>details ici !</a></p>
+            </div>
+        </section>
+
+        <figure>
+            <img src="{% static 'images/cv_img/planche-1b.png' %}" alt="" />
+        </figure>
+        <section>
+            <div>
+                <h2>HOMYFOOD</h2>
+                <p><a href='projet-ohmyfood.html'>details ici !</a></p>
+            </div>
+        </section>
+
+        <figure>
+            <img src="{% static 'images/cv_img/agence2.png' %}" alt="" />
+        </figure>
+        <section>
+            <div>
+                <h2>LA CHOUETTE AGENCE</h2>
+                <p><a href='projet-agence.html'>details ici !</a></p>
+            </div>
+        </section>
+
+        <figure>
+            <img src="{% static 'images/cv_img/eco.png' %}" alt="" />
+        </figure>
+        <section>
+            <div>
+                <h2>SITE DE DÉMÉNAGEMENT</h2>
+                <p><a href="{% url 'eco_demenagement_details' %}">details ici !</a></p>
+            </div>
+        </section>
+
+        <figure>
+            <img src="{% static 'images/cv_img/finportfolio.jpg' %}" alt="" />
+        </figure>
+        <section>
+            <div>
+                <h2>Merci pour votre visite !</h2>
+                <p><a href="{% url 'index' %}">retour acceuil</a></p>
+            </div>
+        </section>
+    </article>
+    <!-- #End Portfolio Details Section -->
+    </main><!-- End #main -->
+
+{% endblock %}

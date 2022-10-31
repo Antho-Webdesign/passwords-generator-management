@@ -1,0 +1,91 @@
+{% extends 'portfolio/base_pr.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+.box {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 30px auto;
+}
+
+.boutons {
+    display: flex;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.post-img {
+  width: 35%;
+}
+
+.bg-card {
+    background: #e6e2e2;
+}
+
+.flex-post-head {
+  /* justify-content: space-between; */
+  /* margin-bottom: 20px; */
+  justify-content: space-around;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.col-md-8 {
+  /* padding: 50px; */
+  padding: 10px;
+}
+
+</style>
+<h1 class="text-center">ICI liste des sites vitrines</h1>
+    <div class="separateur"></div>
+
+    <!-- ===== container article ===== -->
+    <div class="container">
+
+        {% for project in project_list %}
+                <div class="row">
+                    <div class="col-md-8 card mb-4 bg-card mt-3 left top">
+
+                        <div class="card-body">
+                            <!-- head du blog -->
+                            <div class="flex-post-head">
+
+                                <h1 class="post-title">
+                                        {{ project.project_name }}
+                                </h1>
+                                <img class="post-img" src="{{ project.project_image.url }}" alt="image du post">
+                            </div>
+                                <p class="text text-dark">Status: {{ project.project_status }}</p>
+
+                            <!-- ===== body du blog ===== -->
+                            <!-- auteur et date -->
+                            <p class="text-muted">
+                                {{ project.date }} | {{ project.project_category }}
+                            </p>
+
+                            <!-- contenu de l'article du blog -->
+
+                            <!-- lien vers details du projet -->
+                            <div class="box">
+                                <a href="{% url 'details_pr' project.slug %}" class="btn btn-success boutons">Détails du projet</a>
+
+                                <a href="{{ project.project_link }}" class="btn btn-warning boutons">Lien du projet</a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            <div class="separateur"></div>
+    {% endfor %}
+
+        <a href="{% url 'liste_projet_web' %}" class="btn btn-warning boutons">
+            Retour liste
+        </a>
+    </div>
+ <div class="separateur"></div>
+{%  endblock %}

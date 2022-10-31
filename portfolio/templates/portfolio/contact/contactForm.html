@@ -1,0 +1,44 @@
+{% extends 'portfolio/base_pr.html' %}
+{% load static %}
+
+{% block content %}
+<main id="main">
+    <div class="container">
+        <h1 class="text-center mt-5">Pas ici</h1>
+        <div class="row">
+            <!-- ======= Contact Section ======= -->
+            <form class="form-group" name="contactForm">
+                {% csrf_token %}
+
+                <div class="form-item">
+                    <div class="lbl">
+                        <label for="name">Name</label>
+                    </div>
+                    <input type="text" class="form-control input" id="name" name="name">
+                </div>
+
+                <div class="form-item">
+                    <div class="lbl">
+                        <label for="email">Email</label>
+                    </div>
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+                </div>
+
+                <div class="form-item">
+                    <div class="lbl">
+                        <label for="message">Message</label>
+                    </div>
+                    <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+                </div>
+
+                <div class="form-item">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+            </form>
+          </div>
+        </div>
+</main><!-- End #main -->
+
+
+{%  endblock %}

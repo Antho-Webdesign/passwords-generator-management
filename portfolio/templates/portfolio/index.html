@@ -1,0 +1,328 @@
+{% extends 'portfolio/base_pr.html' %}
+
+{% block content %}
+{% load static %}
+
+<main id="main" data-aos="fade" data-aos-delay="1500" class="bg-dark">
+
+<!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center"
+           data-aos="fade" data-aos-delay="1500">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 text-center">
+          <h2>I'm
+              <br/>
+              <span>
+                  <strong class="titre-toutchy">
+                      Toutchy's kipik
+                  </strong>
+              </span>
+              <br/>
+              and
+              <br/>
+              welcome in my world
+          </h2>
+          <p>Passionné par l’univers du web et doté d’une grande curiosité, je me suis spécialisé dans le développement front-end et la création du site internet. .</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+    <!-- ======= Skills ======= -->
+    <section id="skills" class="skills section-bg">
+        <div class="container">
+            <div class="section-title">
+                <a class="btn btn-warning" href="#">Liste des projets (en dev)</a>
+                <h2>Skills</h2>
+                <p>Tour d'horizon des languages pratiquées:</p>
+            </div>
+            <div class="box-skills">
+                <figure class="snip1543">
+                    <img src="{% static 'images/skills/design.png' %}" alt="sample108"/>
+                    <figcaption>
+                        <h3>
+                            Html
+                            <br/>
+                            Css
+                            <br/>
+                            Scss
+                            <br/>
+                            Sass
+                        </h3>
+                    </figcaption>
+                    <a href="#"></a>
+                </figure>
+                <figure class="snip1543">
+                    <img src="{% static 'images/skills/java.jpg' %}" alt="sample100" />
+                    <figcaption>
+                        <h3>
+                            JAVA-PO
+                            <br/>
+                            JAVA-SE
+                            <br/>
+                            JAVA-EE</h3>
+                    </figcaption>
+                    <a href="#"></a>
+                </figure>
+                <figure class="snip1543">
+                    <img src="{% static 'images/skills/sql.png' %}" alt="sample101" />
+                    <figcaption>
+                        <h3>POSTGRE
+                            <br/>
+                            MYSQL
+                            <br/>
+                            SQL-SERVER
+                            <br/>
+                            ORACLE</h3>
+                    </figcaption>
+                    <a href="#"></a>
+                </figure>
+
+                <figure class="snip1543">
+                    <img src="{% static 'images/skills/php.png' %}" alt="sample100" />
+                    <figcaption>
+                        <h3>Php
+                            <br/>
+                            Symfony
+                        </h3>
+                    </figcaption>
+                    <a href="#"></a>
+                </figure>
+
+                <figure class="snip1543">
+                    <img src="{% static 'images/skills/js.jpg' %}" alt="sample100" />
+                    <figcaption>
+                        <h3>
+                            JavaScript
+                            <br/>
+                            TypeScript
+                            <br/>
+                            Angular
+                        </h3>
+                    </figcaption>
+                    <a href="#"></a>
+                </figure>
+
+                <figure class="snip1543">
+                    <img src="{% static 'images/skills/android.png' %}" alt="sample101" />
+                    <figcaption>
+                        <h3>Android Studio
+                            <br/>
+                            kotlin
+                        </h3>
+                    </figcaption>
+                    <a href="#"></a>
+                </figure>
+            </div>
+        </div>
+    </section>
+    <!-- SKILLS -->
+
+    <!--===== separateur =====-->
+    <div class="separateur">
+    </div>
+
+    <!-- ======= ENVIRONNEMENTS et IDE ======= -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mais sur quelle IDE travail-tu ?</h2>
+                <p class="cite">Comme a dit un grand homme :
+                    <br>
+                    <cite>"A chaque problème, il y'a une solution"</cite>
+                </p>
+            </div>
+
+            <div class="row">
+                <!-- ===== VS CODE ===== -->
+                <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                        <img src="{% static 'images/ide/vscode.svg' %}" alt="PyCharm">
+                    </div>
+                    <div class="icon-text">
+                        <h4 class="title">Visual studio code</h4>
+                        <p class="description">Pour les projets de "site vitrine"</p>
+                    </div>
+                </div>
+                <!-- ===== PyCharm ===== -->
+                <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                        <img src="{% static 'images/ide/pycharm.svg' %}" alt="PyCharm">
+                    </div>
+                    <div class="icon-text">
+                        <h4 class="title">PyCharm</h4>
+                        <p class="description">Pour les projets en python !</p>
+                    </div>
+                </div>
+
+                <!-- ===== PHP STORM ===== -->
+                <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                        <img src="{% static 'images/ide/webstorm.svg' %}" alt="">
+                    </div>
+                    <div class="icon-text">
+                        <h4 class="title">Web Storm</h4>
+                        <p class="description">Pour les projets php !</p>
+                    </div>
+                </div>
+
+                <!-- ===== ECLIPSE ===== -->
+                <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                        <img src="{% static 'images/ide/eclipse.svg' %}" alt="Eclipse">
+                    </div>
+                    <div class="icon-text">
+                        <h4 class="title">Eclipse</h4>
+                        <p class="description">Pour les projets java !</p>
+                    </div>
+                </div>
+                <!-- ===== GITHUB ===== -->
+                <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                        <img src="{% static 'images/ide/android-studio.svg' %}" alt="">
+                    </div>
+                    <div class="icon-text">
+                        <h4 class="title">Android studio</h4>
+                        <p class="description">Pour les projets mobiles !</p>
+                    </div>
+                </div>
+
+                <!-- ===== Docker ===== -->
+                <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                        <img src="{% static 'images/ide/github.svg' %}" alt="">
+                    </div>
+                    <div class="icon-text">
+                        <h4 class="title">Github</h4>
+                        <p class="description">Pour le versionning et les projets collaboratifs!</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- ENVIRONNEMENTS -->
+
+    <!--===== separateur =====-->
+    <div class="separateur">
+    </div>
+
+    <!-- ======= IDE ======= -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Et, qu'utilise tu d'autres ?</h2>
+                <p class="cite">Comme a dit un grand homme :
+                    <br>
+                    <cite>"On ne plante pas un clou avec un ordi !! euh.. un truc comme ça"</cite>
+                </p>
+            </div>
+
+            <div class="row">
+
+                <!-- ===== codepen ===== -->
+                <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                        <img src="{% static 'images/ide/symfony.png' %}" alt="">
+                    </div>
+                    <div class="icon-text">
+                        <h4 class="title">Symfony</h4>
+                        <p class="description">Pour les applications php !</p>
+                    </div>
+                </div>
+
+                <!-- ===== codepen ===== -->
+                <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                        <img src="{% static 'images/ide/tomcat.svg' %}" alt="">
+                    </div>
+                    <div class="icon-text">
+                        <h4 class="title">Apache tomcat</h4>
+                        <p class="description">Pour le serveur des projets java !</p>
+                    </div>
+                </div>
+
+                <!-- ===== Docker ===== -->
+                <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                        <img src="{% static 'images/ide/docker.svg' %}" alt="">
+                    </div>
+                    <div class="icon-text">
+                        <h4 class="title">Docker / XAMP</h4>
+                        <p class="description">Pour les environnements virtuels !</p>
+                    </div>
+                </div>
+
+                <!-- ===== postgres ===== -->
+                <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                        <img src="{% static 'images/ide/postgresql.svg' %}" alt="">
+                    </div>
+                    <div class="icon-text">
+                        <h4 class="title">Postgresql</h4>
+                        <p class="description">Pour les bases de données !</p>
+                    </div>
+                </div>
+
+                <!-- ===== firebase ===== -->
+                <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                        <img src="{% static 'images/ide/firebase.svg' %}" alt="">
+                    </div>
+                    <div class="icon-text">
+                        <h4 class="title">firebase</h4>
+                        <p class="description">Pour les bases de données nosql !</p>
+                    </div>
+                </div>
+
+                <!-- ===== Docker ===== -->
+                <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                        <img src="{% static 'images/ide/bootstrap.svg' %}" alt="">
+                    </div>
+                    <div class="icon-text">
+                        <h4 class="title">Bootstrap</h4>
+                        <p class="description">Pour la mise en page et le responsive !</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!--===== separateur =====-->
+    <div class="separateur">
+    </div>
+
+    <!-- ======= IDE ======= -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Et pour les CRM ?</h2>
+                <p class="cite">Comme a dit un grand homme : ""</p>
+            </div>
+
+            <div class="row">
+
+                <!-- ===== odoo ===== -->
+                <div class="box-env" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                        <img src="{% static 'images/ide/odoo.png' %}" alt="">
+                    </div>
+                    <div class="icon-text">
+                        <h4 class="title">Odoo</h4>
+                        <p class="description">Pour les projets nécessitant un CRM !</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+  </main><!-- End #main -->
+
+{% endblock %}
+
