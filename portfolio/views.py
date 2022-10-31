@@ -24,7 +24,7 @@ def pizzeria(request):
 def category_list(request):
     queryset = Project.objects.all()
     context = {
-        'object_list': queryset
+        'category_list': queryset
     }
     return render(request, 'portfolio/projets/category/list_category.html', context)
 
