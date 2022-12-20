@@ -38,10 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pwa',
+    'django_bootstrap5',
     'generator',
     'users',
     'crispy_forms',
     'fontawesomefree',
+    'django.contrib.sites',
+    'pwa_webpush',
     # 'portfolio.apps.PortfolioConfig',
 ]
 
@@ -74,6 +78,36 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'djangoPasswordGenerator.wsgi.application'
+
+
+PWA_APP_NAME = 'My App'
+PWA_APP_DESCRIPTION = "My app description"
+PWA_APP_THEME_COLOR = '#0A0302'
+PWA_APP_BACKGROUND_COLOR = '#ffffff'
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_SCOPE = '/',
+PWA_APP_ORIENTATION = 'any'
+PWA_APP_START_URL = '/'
+PWA_APP_ICONS = [
+    {
+        'src': '/static/images/my_app_icon.png',
+        'sizes': '160x160'
+    }
+]
+PWA_APP_SPLASH_SCREEN = [
+    {
+        'src': '/static/images/icons/splash-640x1136.png',
+        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+    }
+]
+PWA_APP_DIR = 'ltr'
+PWA_APP_LANG = 'en-US'
+
+WEBPUSH_SETTINGS = {
+    "VAPID_PUBLIC_KEY": "BMcR1vkUuO1O-27jRYUn4zAj6I7PsJWNk1QgAZjn6k2n05r13k0t0xnOq0NvEG9yelN_Oi-lE4DTYn09RrCEKDA",
+    "VAPID_PRIVATE_KEY":"hz7FPblJsf0K_lVulzE0YwPlZJlGkabgi-njufJD2M0",
+    "VAPID_ADMIN_EMAIL": "toutxhy.kipik@pm.me"
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -140,5 +174,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+
+PWA_NAME = "test"
+
 
 django_heroku.settings(locals())
