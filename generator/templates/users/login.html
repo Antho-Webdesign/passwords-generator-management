@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
+
+{% load static %}
+
 {% block content %}
     <div class="content-section">
         <form class="form" method="POST" style="width: 40%;">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Page connexion</legend>
+                <h1 class="border-bottom mb-4">Page connexion</h1>
                 <label for="username">Nom d'utilisateur</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Nom d'utilisateur">
                 <label for="password">Mot de passe</label>
