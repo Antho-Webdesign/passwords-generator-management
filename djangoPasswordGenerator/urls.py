@@ -9,7 +9,7 @@ from users.views import profile
 urlpatterns = [
         path('admin/', admin.site.urls),
         path('', include('generator.urls')),
-        path('', include('users.urls')),
+        path('accounts/', include('users.urls')),
         path('profile/', profile, name='profile'),
         # path('portfolio/', include('portfolio.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
