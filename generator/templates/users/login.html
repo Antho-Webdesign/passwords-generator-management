@@ -7,7 +7,11 @@
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Page connexion</legend>
-                {{ form|crispy }}
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Nom d'utilisateur">
+                <label for="password">Mot de passe</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
+
             </fieldset>
             <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
                 <button class="btn btn-outline-info" type="submit">Connexion</button>
