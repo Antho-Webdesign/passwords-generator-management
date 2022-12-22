@@ -1,11 +1,12 @@
-from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
+
+from users.models import Customer
 
 
 # Create your models here.
 class GenPass(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(Customer, on_delete=models.CASCADE)
     site = models.CharField(max_length=30)
     time = models.DateTimeField(default=timezone.now)
     passwords = models.CharField(max_length=300)

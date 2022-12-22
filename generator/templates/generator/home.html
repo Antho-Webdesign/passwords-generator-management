@@ -2,19 +2,47 @@
 {% load static %}
 
 {% block content %}
+<style>
 
-    <div>
+.homeform {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  justify-content: center;
+  margin: auto;
+}
+
+.inputclass {
+  padding: 10px;
+  border-radius: 20px;
+  margin-bottom: 45px;
+}
+
+.labelclass {
+  margin-bottom: 10px;
+}
+
+.btn-generer {
+  width: 33%;
+  justify-content: center;
+  display: flex;
+  margin: 30px auto;
+  border-radius: 10px;
+}
+
+</style>
+    <div class=" mt-5 mb-5">
         <h1 class="text-center">Generer un mdp</h1>
     </div>
 
     <div class="content">
-        <form method="POST">
+        <form class="homeform" method="POST">
             {% csrf_token %}
-            <label for="site">Nom du site :</label>
-                <input type="text" name="site" id="site">
+            <label class="labelclass" for="site">Nom du site :</label>
+                <input type="text" name="site" id="site" class="inputclass">
 
-            <label for="lenght">Nombre de caractères :</label>
-                <input type="text" name="length" id="lenght" placeholder="length of password">
+            <label class="labelclass" for="lenght">Nombre de caractères :</label>
+                <input type="text" name="length" id="lenght" class="inputclass" placeholder="length of password">
 
             <input class="btn btn-success btn-generer" type="submit" value="Générer">
         </form>

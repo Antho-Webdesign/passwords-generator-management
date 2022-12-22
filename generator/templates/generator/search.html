@@ -2,15 +2,42 @@
 {% load static %}
 
 {% block content %}
+<style>
 
+.homeform {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  justify-content: center;
+  margin: auto;
+}
+
+.inputclass {
+  padding: 10px;
+  border-radius: 20px;
+  margin-bottom: 45px;
+}
+
+.labelclass {
+  margin-bottom: 10px;
+}
+
+.btn-rechercher {
+  width: 33%;
+  justify-content: center;
+  display: flex;
+  margin: 30px auto;
+  border-radius: 10px;
+}
+</style>
     <h1 class="text-center">Rechercher un mot de passe</h1>
     <div>
-        <form method="POST" class="form-search">
+        <form method="POST" class="form-search homeform">
             {% csrf_token %}
-            <label for="site">Pour le site :</label>
-                <input type="text" name="site" id="site">
+            <label class="labelclass" for="site">Pour le site :</label>
+                <input class="inputclass" type="text" name="site" id="site">
 
-            <input type="submit" class="btn btn-success" value="Rechercher">
+            <input type="submit" class="btn btn-success btn-rechercher" value="Rechercher">
         </form>
     </div>
 

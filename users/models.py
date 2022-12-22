@@ -1,9 +1,12 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from django.db import models
 from django.utils import timezone
 
+class Customer(AbstractUser):
+    pass
+
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(Customer, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
     def __str__(self):
@@ -23,12 +26,13 @@ MDP
 - password
 '''
 
-
+'''
 class MdpGenere(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(Customer, on_delete=models.CASCADE)
     url_origin = models.CharField(max_length=30)
     date_enr = models.DateTimeField(default=timezone.now)
     passwords_generate = models.CharField(max_length=300)
 
     def __str__(self):
         return self.url_origin
+'''

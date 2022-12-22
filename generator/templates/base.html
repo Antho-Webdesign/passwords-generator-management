@@ -14,7 +14,37 @@
     <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet">
 </head>
 
+<style>
 
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.navliste {
+  display: flex;
+  width: 66%;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.ullist {
+  display: flex;
+  justify-content: space-around;
+  margin: auto 0 auto auto;
+  width: 60%;
+  list-style: none;
+  font-size: 1.3em;
+}
+
+.title {
+  display: flex;
+  width: 33%;
+  justify-content: center;
+  padding: 20px;
+}
+
+</style>
 <body class="bg-dark text-light">
     <header class="header text-light" style="background: black">
         <div class="title">
@@ -24,8 +54,8 @@
                 </a>
             </h1>
         </div>
-        <nav class="navbar nav">
-            <ul style="list-style: none;">
+        <nav class="navbar navliste">
+            <ul class="ullist">
                 <li>
                     <!--<i class="fa fa-house"></i>-->
                     <a href="{% url 'home' %}">Accueil</a>
@@ -35,7 +65,7 @@
                     <a href="{% url 'listall' %}">Coffre-fort</a>
                 </li>
 
-                <li class="me-5">
+                <li>
                     <a href="{% url 'search' %}">Rechercher</a>
                 </li>
 

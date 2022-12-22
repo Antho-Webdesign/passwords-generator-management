@@ -23,18 +23,15 @@ ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'pwa',
     'django_bootstrap5',
     'generator',
     'users',
     'crispy_forms',
     'fontawesomefree',
-    # 'pwa_webpush',
     # 'portfolio.apps.PortfolioConfig',
 ]
 
@@ -124,6 +121,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+AUTH_USER_MODEL = 'users.Customer'
+
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
@@ -133,7 +133,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
-
-
 
 django_heroku.settings(locals())
