@@ -18,22 +18,33 @@ def home(request):
             context = {'message': message}
             return render(request, 'generator/home.html', context)
         else:
+            user = request.user
             numbers = '1234567890'
             small_letters = "qwertyuioplkjhgfdsazxcvbnm"
             prep = f"!@#$%^&**()_+{numbers}{small_letters}QWERTYUIOPASDFGHJKLMNBVCXZ"
             passwd = ''.join(random.sample(prep, k=password_length))
             print(passwd)
             p = GenPass.objects.create(site=site, passwords=passwd, user=user)
+
             p.save()
-            context = {'password': passwd}
+            context = {
+                'password': passwd,
+                'site': site,
+                'user': user,
+            }
             return render(request, 'generator/success.html', context)
     return render(request, "generator/home.html")
 
 
 @login_required
 def listall(request):
+    user = request.user
+    items = GenPass.objects.filter(user=user)
+    results = GenPass.objects.filter(user=user)
     context = {
-        'items': GenPass.objects.filter(user=request.user)
+        'results': results,
+        'items': items,
+        'user': user,
     }
     return render(request, 'generator/listalll.html', context)
 
