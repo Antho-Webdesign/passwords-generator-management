@@ -3,8 +3,70 @@ from django.contrib.auth import get_user_model, logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from .forms import RegisterForm, UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from .models import Profile
+
+from django.shortcuts import render
+from .forms import LoginForm
+
+
+def sign_in(request):
+
+    if request.method == 'GET':
+        if request.user.is_authenticated:
+            return redirect('home')
+
+        form = LoginForm()
+        return render(request, 'users/login.html', {'form': form})
+
+    elif request.method == 'POST':
+        form = LoginForm(request.POST)
+
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            if user := authenticate(
+                request, username=username, password=password
+            ):
+                login(request, user)
+                messages.success(
+                    request, f'Hi {username.title()}, welcome back!')
+                return redirect('home')
+
+        # either form not valid or user is not authenticated
+        messages.error(request, 'Invalid username or password')
+        return render(request, 'users/login.html', {'form': form})
+
+
+def sign_out(request):
+    logout(request)
+    messages.success(request, 'You have been logged out.')
+    return redirect('login')
+
+
+def sign_up(request):
+    if request.method == 'GET':
+        form = RegisterForm()
+        return render(request, 'users/register.html', {'form': form})
+
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            return _extracted_from_sign_up_9(form, request)
+        else:
+            return render(request, 'users/register.html', {'form': form})
+    return render(request, 'users/register.html', {'form': form})
+
+
+# TODO Rename this here and in `sign_up`
+def _extracted_from_sign_up_9(form, request):
+    user = form.save(commit=False)
+    user.username = user.username.lower()
+    user.save()
+    messages.success(request, 'You have singed up successfully.')
+    login(request, user)
+    return redirect('home')
+    
 
 User = get_user_model()
 
@@ -35,7 +97,10 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Votre compte a été créé avec succès ! Vous pouvez vous connecter.')
+            messages.success(
+                request,
+                'Votre compte a été créé avec succès ! Vous pouvez vous connecter.',
+            )
             return redirect('login')
     else:
         form = UserRegisterForm()

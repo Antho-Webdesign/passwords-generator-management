@@ -4,12 +4,13 @@ from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, 
     PasswordResetConfirmView, PasswordResetCompleteView
 from django.urls import path
 
-from users.views import register, profile, updt_profile, login_user
+from users.views import register, profile, sign_in, sign_out, sign_up, updt_profile, login_user
 
 urlpatterns = [
-    path('register/', register, name='register'),  # Inscription
-    path('logout/', LogoutView.as_view(template_name='users/logout.html'), name='logout'),  # Déconnection
-    path('login/', login_user, name='login'),
+    path('login/', sign_in, name='login'),
+    path('logout/', sign_out, name='logout'),
+    path('register/', sign_up, name='register'),
+    path('register/', register, name='register'),
     # Profil
     path('profile/', profile, name='profile'),
     # Reset Password

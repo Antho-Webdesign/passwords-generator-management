@@ -4,6 +4,13 @@
 
 {% block content %}
     <div class="content-section">
+        <form method="POST" novalidate>
+            {% csrf_token %}
+            <h2>Login</h2>
+            {{form.as_p}}
+            <input type="submit" value="Login" />
+        </form>
+        {% comment %}
         <form class="form" method="POST" style="width: 40%;">
             {% csrf_token %}
             <fieldset class="form-group">
@@ -21,6 +28,7 @@
                 </small>
             </div>
         </form>
+        {% endcomment %}
         <div style="margin:50px auto; width: 90%; display: flex; justify-content: flex-end;">
             <small class="text-muted" style="">
                 Pas encore de compte ?
