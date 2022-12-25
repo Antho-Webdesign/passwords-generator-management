@@ -96,6 +96,8 @@ def register(request):
         password2 = request.POST.get('password2')
         if form.is_valid():
             form.save()
+            profile = Profile.objects.create(user=user)
+            profile.save()
             username = form.cleaned_data.get('username')
             messages.success(
                 request,
@@ -121,7 +123,7 @@ def register(request):
 def profile(request):
     user = request.user
 
-    profile = get_object_or_404(Profile, user=user)
+    profile = get.object_or_404(Profile, user=user)
     return render(request, 'users/profile.html', {'profile': profile})
 
 
