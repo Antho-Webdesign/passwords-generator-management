@@ -27,36 +27,36 @@ def logout_user(request):
 
 def register(request):
     user = request.user
-
-    if request.method == "POST":
-        # traiter le formulaire
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        password2 = request.POST.get("password2")
-        email = request.POST.get("email")
-        if password == password2:
-            user = User.objects.create_user(username=username, password=password, email=email)
-            user.save()
-            profile = Profile.objects.create_profile(user=user)
-            profile.save()
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        password2 = request.POST.get('password2')
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Votre compte a été créé avec succès ! Vous pouvez vous connecter.')
             return redirect('login')
-        else:
-            messages.info(request, 'Password not matching...')
-            return redirect('register')
-            user = User.objects.create_user(username=username)
-            login(request, user)
-
-            return redirect('home')
     else:
-        # afficher le formulaire
-        return render(request, 'users/register.html')
-    return render(request, 'users/register.html')
+        form = UserRegisterForm()
+        context = {
+            'form': form,
+            'title': 'Inscription',
+            'username': username,
+            'email': email,
+            'password': password,
+            'password2': password2,
+            }
+
+    return render(request, 'users/register.html', context)
+
 
 
 @login_required
 def profile(request):
     user = request.user
-    profile = Profile.objects.get(user=user)
+
+    profile = get_object_or_404(Profile, user=user)
     return render(request, 'users/profile.html', {'profile': profile})
 
 
@@ -78,3 +78,5 @@ def updt_profile(request):
     context = {'u_form': u_form, 'p_form': p_form}
 
     return render(request, 'users/updt-profile.html', context)
+
+

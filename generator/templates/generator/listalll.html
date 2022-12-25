@@ -6,19 +6,20 @@
         <h1 class="text-center">Mon coffre fort</h1>
     </div>
 
+    <div class="container">
         {% for i in results %}
-        <table>
+        <table class="border border-1">
             <tr>
-                <td>Site</td>
-                <td>Enregistrer le</td>
-                <td>MDP généré</td>
+                <td class="border border-1 fs-3 p-5">Site</td>
+                <td class="border border-1 fs-3 p-5">Enregistrer le</td>
+                <td class="border border-1 fs-3 p-5">MDP généré</td>
                 <td></td>
             </tr>
 
             <tr>
-                <td>{{ i.site }}</td>
-                <td>{{ i.time }}</td>
-                <td>{{ i.passwords }}</td>
+                <td class="border border-1 fs-3 p-5">{{ i.site }}</td>
+                <td class="border border-1 fs-3 p-5">{{ i.time }}</td>
+                <td class="border border-1 fs-3 p-5">{{ i.passwords }}</td>
 
                 <td>
                     <a href="{% url 'deleterecord' i.id %}">
@@ -29,7 +30,7 @@
             </tr>
         </table>
     {% endfor %}
-
+    </div>
     {% for i in results %}
        {{ i.site }}
     {% endfor %}

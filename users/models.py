@@ -16,7 +16,17 @@ class Profile(models.Model):
         verbose_name = 'profile'
         verbose_name_plural = 'profiles'
         ordering = ['user']
+"""
+    @receiver(post_save, sender=User)  # add this
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
 
+    @receiver(post_save, sender=User)  # add this
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()
+    
+"""
 
 '''
 MDP 
