@@ -6,9 +6,7 @@
         <h1 class="text-center">Mon coffre fort</h1>
     </div>
 
-    {% if user != 'user.username' %}
-
-        {% for i in items %}
+        {% for i in results %}
         <table>
             <tr>
                 <td>Site</td>
@@ -31,6 +29,9 @@
             </tr>
         </table>
     {% endfor %}
-{% endif %}
+
+    {% for i in results %}
+       {{ i.site }}
+    {% endfor %}
 
 {% endblock %}

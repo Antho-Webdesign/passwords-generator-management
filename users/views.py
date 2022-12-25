@@ -1,23 +1,28 @@
-from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth import get_user_model, logout, login, authenticate
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
+
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from .models import Profile
+
+User = get_user_model()
 
 def login_user(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+    if request.method == "POST":
+        # traiter le formulaire
+        username = request.POST.get("username")
+        password = request.POST.get("password")
 
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
+        if user := authenticate(request, username=username, password=password):
             login(request, user)
             return redirect('home')
-        else:
-            messages.info(request, 'Username OR password is incorrect')
 
     return render(request, 'users/login.html')
+
+def logout_user(request):
+    logout(request)
+    return redirect('home')
 
 
 def register(request):
@@ -38,6 +43,12 @@ def register(request):
         else:
             messages.info(request, 'Password not matching...')
             return redirect('register')
+=======
+            user = User.objects.create_user(username=username)
+            login(request, user)
+
+            return redirect('home')
+>>>>>>> 2414e2a0a3fa68856f3e2124f90dd80c65fb834f
     else:
         # afficher le formulaire
         return render(request, 'users/register.html')
@@ -47,11 +58,8 @@ def register(request):
 @login_required
 def profile(request):
     user = request.user
-    profile = get_object_or_404(Profile, user=user)
-    context = {
-        'profile': profile
-    }
-    return render(request, 'users/profile.html', context)
+    profile = Profile.objects.get(user=user)
+    return render(request, 'users/profile.html', {'profile': profile})
 
 
 @login_required

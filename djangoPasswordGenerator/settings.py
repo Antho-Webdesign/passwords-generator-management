@@ -27,13 +27,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'pwa',
     'django_bootstrap5',
     'generator',
     'users',
     'crispy_forms',
     'fontawesomefree',
-    # 'pwa_webpush',
     # 'portfolio.apps.PortfolioConfig',
 ]
 
@@ -66,12 +64,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'djangoPasswordGenerator.wsgi.application'
-
-WEBPUSH_SETTINGS = {
-    "VAPID_PUBLIC_KEY": "BMcR1vkUuO1O-27jRYUn4zAj6I7PsJWNk1QgAZjn6k2n05r13k0t0xnOq0NvEG9yelN_Oi-lE4DTYn09RrCEKDA",
-    "VAPID_PRIVATE_KEY":"hz7FPblJsf0K_lVulzE0YwPlZJlGkabgi-njufJD2M0",
-    "VAPID_ADMIN_EMAIL": "toutxhy.kipik@pm.me"
-}
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -129,6 +121,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+AUTH_USER_MODEL = 'users.Customer'
+
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
@@ -138,7 +133,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
-
-
 
 django_heroku.settings(locals())
