@@ -95,15 +95,7 @@ def register(request):
         password = request.POST.get('password')
         password2 = request.POST.get('password2')
         if form.is_valid():
-            form.save()
-            profile = Profile.objects.create(user=user)
-            profile.save()
-            username = form.cleaned_data.get('username')
-            messages.success(
-                request,
-                'Votre compte a été créé avec succès ! Vous pouvez vous connecter.',
-            )
-            return redirect('login')
+            return _extracted_from_register_9(user, request)
     else:
         form = UserRegisterForm()
         context = {
@@ -116,6 +108,19 @@ def register(request):
             }
 
     return render(request, 'users/register.html', context)
+
+
+# TODO Rename this here and in `register`
+def _extracted_from_register_9(user, request):
+    form.save()
+    profile = Profile.objects.create(user=user)
+    profile.save()
+    username = form.cleaned_data.get('username')
+    messages.success(
+        request,
+        'Votre compte a été créé avec succès ! Vous pouvez vous connecter.',
+    )
+    return redirect('login')
 
 
 
