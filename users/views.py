@@ -43,12 +43,10 @@ def register(request):
         else:
             messages.info(request, 'Password not matching...')
             return redirect('register')
-=======
             user = User.objects.create_user(username=username)
             login(request, user)
 
             return redirect('home')
->>>>>>> 2414e2a0a3fa68856f3e2124f90dd80c65fb834f
     else:
         # afficher le formulaire
         return render(request, 'users/register.html')
