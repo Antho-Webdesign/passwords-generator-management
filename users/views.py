@@ -21,23 +21,37 @@ def login_user(request):
 
 
 def register(request):
-    if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, 'Votre compte a été créé! Vous pouvez maintenant vous connecter')
+    user = request.user
 
+    if request.method == "POST":
+        # traiter le formulaire
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        password2 = request.POST.get("password2")
+        email = request.POST.get("email")
+        if password == password2:
+            user = User.objects.create_user(username=username, password=password, email=email)
+            user.save()
+            profile = Profile.objects.create_profile(user=user)
+            profile.save()
             return redirect('login')
+        else:
+            messages.info(request, 'Password not matching...')
+            return redirect('register')
     else:
-        form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+        # afficher le formulaire
+        return render(request, 'users/register.html')
+    return render(request, 'users/register.html')
 
 
 @login_required
 def profile(request):
     user = request.user
-    return render(request, 'users/profile.html', {'user': user})
+    profile = get_object_or_404(Profile, user=user)
+    context = {
+        'profile': profile
+    }
+    return render(request, 'users/profile.html', context)
 
 
 @login_required

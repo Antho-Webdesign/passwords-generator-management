@@ -9,7 +9,9 @@ from users.views import register, profile, updt_profile, login_user
 urlpatterns = [
     path('register/', register, name='register'),  # Inscription
     path('logout/', LogoutView.as_view(template_name='users/logout.html'), name='logout'),  # Déconnection
-    path('login/', login_user, name='login'),  # Profil
+    path('login/', login_user, name='login'),
+    # Profil
+    path('profile/', profile, name='profile'),
     # Reset Password
     path('password-reset/', PasswordResetView.as_view(template_name='users/password_reset.html'),
          name='password_reset'),
