@@ -1,19 +1,48 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-import random
+import random, string
 from .models import GenPass
+from .forms import PassGenForm
+from django.views import View
+import re
 
 User = get_user_model()
 
 # Create your views here.
 
+
+class Index(View):
+	def get(self, request):
+		form = PassGenForm()
+
+		context = {'form': form}
+		return render(request, 'users/generer.html', context)
+
+	def post(self, request):
+		form = PassGenForm(request.POST)
+
+		if form.is_valid():
+			available_characters = string.ascii_letters + string.digits
+
+			if form.cleaned_data['include_symbols']:
+				available_characters += string.punctuation
+
+			if form.cleaned_data['remove_similar_characters']:
+				ambiguous_characters = ['Z', '2', 'l', '1', '0', 'O', 'o']
+				available_characters = re.sub('|'.join(ambiguous_characters), '', available_characters)
+			password = ''.join(random.choice(available_characters) for i in range(form.cleaned_data['length']))
+		return render(request, 'generator/password.html', {'password': password})
+
 def home(request):
+
     if request.method == "POST":
         site = request.POST.get('site')
         user = request.POST.get('user.username')
         if site == "":
-            return render(request, 'generator/home.html')
+            messages = "Please enter a site name"
+            context = {'messages': messages}
+            return render(request, 'generator/home.html', context)
         password_length = int(request.POST.get('length'))
         if password_length > 30:
             message = "can't generate password more than 30 characters"
