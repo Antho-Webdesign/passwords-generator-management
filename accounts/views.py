@@ -1,97 +1,113 @@
-from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView
-from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
-from django.views import View
-from django.views.generic.edit import CreateView
-
-from .forms import CustomUserCreationForm, UserUpdateForm, ProfileUpdateForm
+from genericpath import exists
+import random
+from django.contrib.auth import get_user_model, logout, login, authenticate
+from django.shortcuts import render, redirect, get_object_or_404
+from django.core.mail import send_mail
+from .models import Profile
 
 
-class SignUpView(CreateView):
-    form_class = CustomUserCreationForm
-    success_url = reverse_lazy("login")
-    template_name = "users/register.html"
+User = get_user_model()
+
+
+# Create your views here.
+def signup(request):
+
+    if request.method == "POST":
+        # traiter le formulaire
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        password2 = request.POST.get("password2")
+        if password == password2:
+            user = User.objects.create_user(username, email, password)
+            profile = Profile.objects.create(user=user)
+            user.save()
+            profile.save()
+            return redirect('login')
+        else:
+            return redirect('signup')
+    return render(request, 'accounts/signup.html')
 
 def login_user(request):
-    if request.method != 'POST':
-        return render(request, 'users/login.html', {})
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        user.save()
-        login(request, user)
-        return redirect('home')
-    else:
-        messages.error(request, 'Invalid username or password')
+    if request.method == "POST":
+        # traiter le formulaire
+        username = request.POST.get("username")
+        password = request.POST.get("password")
 
-        context = {
-            'username': username,
-        }
-        return render(request, 'users/login.html', context)
+        if user := authenticate(request, username=username, password=password):
+            login(request, user)
+            return redirect('home')
+    return render(request, 'accounts/login.html')
+
 
 def logout_user(request):
     logout(request)
     return redirect('home')
 
-class MyLoginView(LoginView):
-    template_name = 'users/login.html'
-    redirect_authenticated_user = True
 
-    def get_success_url(self):
-        return reverse_lazy('profile')
-
-    def form_invalid(self, form):
-        messages.error(self.request, 'Invalid username or password')
-        return self.render_to_response(self.get_context_data(form=form))
-
-    def form_valid(self, form):
-        messages.success(self.request, 'You are logged in')
-        return super().form_valid(form)
+def profile(request):
+    user = request.user
+    profile = get_object_or_404(Profile, user=user)
+    context = {
+        'profile': profile,
+    }
+    return render(request, 'accounts/profile.html', context)
 
 
-
-
-class MyProfile(LoginRequiredMixin, View):
-    def get(self, request):
-        user_form = UserUpdateForm(instance=request.user)
-        profile_form = ProfileUpdateForm(instance=request.user.profile)
-
-        context = {
-            'user_form': user_form,
-            'profile_form': profile_form
+def edit_profile(request):
+    user = request.user
+    profile = get_object_or_404(Profile, user=user)
+    context = {
+        'profile': profile,
+    }
+    if request.method == "POST":
+        # traiter le formulaire
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        phone = request.POST.get("phone")
+        address = request.POST.get("address")
+        city = request.POST.get("city")
+        zip_code = request.POST.get("zip_code")
+        state = request.POST.get("state")
+        country = request.POST.get("country")
+        user.username = username
+        user.email = email
+        profile.phone = phone
+        profile.address = address
+        profile.city = city
+        profile.zip_code = zip_code
+        profile.state = state
+        profile.country = country
+        message = "Your profile has been updated successfully"
+        msg = {
+            'message': message,
         }
+        context.update(msg)
 
-        return render(request, 'users/profile.html', context)
+        profile.save()
+        return redirect('profile')
+    return render(request, 'accounts/profile_update.html', context)
 
-    def post(self, request):
-        user_form = UserUpdateForm(
-            request.POST,
-            instance=request.user
-        )
-        profile_form = ProfileUpdateForm(
-            request.POST,
-            request.FILES,
-            instance=request.user.profile
-        )
 
-        if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
-            profile_form.save()
+def password_reset_form(request):
+    if request.method == "POST":
+        email = request.POST.get("email")
+        if email := User.objects.get(email=email):
+            # protocol = 'https'
+            host = '127.0.0.1:8000/'
+            link = 'accounts/password_reset/confirm/'
+            send_mail('Password Reset', f'{host}{link}', ' ', [email], fail_silently=False)
+            print(send_mail)
+            return redirect('password_reset_form_done')
 
-            messages.success(request, 'Your profile has been updated successfully')
+    return render(request, 'accounts/registration/password_reset_form.html')
 
-            return redirect('profile')
-        else:
-            context = {
-                'user_form': user_form,
-                'profile_form': profile_form
-            }
-            messages.error(request, 'Error updating you profile')
+def password_reset_form_done(request):
+    return render(request, 'accounts/registration/password_reset_done.html')
 
-        return render(request, 'users/profile.html', context)
+def password_reset_confirm(request):
+    return render(request, 'accounts/registration/password_reset_confirm.html')
 
+def password_reset_complete(request):
+    return render(request, 'accounts/registration/password_reset_complete.html')
 

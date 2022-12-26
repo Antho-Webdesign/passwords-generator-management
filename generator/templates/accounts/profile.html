@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+
+div.d-flex:nth-child(3) {
+  display: flex !important;
+  width: 100%;
+  justify-content: center;
+}
+
+.img-profile {
+    width: 15%;
+    height: 15%;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+}
+@media screen and (max-width: 600px) {
+    .box-prfl {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center;
+        width: 100%;
+    }
+    .skill-block {
+        width: 100%;
+    }
+}
+</style>
+<div class="container-profile mt-5 mb-5">
+    {% if user.is_authenticated %}
+    <div class="row no-gutters">
+        <img class="img-profile" src="{{ profile.image.url }}" alt="{{ profile.user.username }}">
+
+        <div class="d-flex flex-column">
+            <div class="d-flex flex-row justify-content-between align-items-center p-5 bg-dark text-white">
+                <h3 class="display-5">{{ profile.user.username }}</h3>
+
+                <a class="nav-link" href="">
+                    <i href="" class="fa fa-2x fa-cart-plus"></i>
+                    <!-- <img src="media/images/panier.png" alt="" style="width:25%"> -->
+                    {{ profile.address }}
+                </a>
+                <a href="{% url 'profile' %}">
+                    <i class="fa fa-2x fa-user"></i>
+                </a>
+                <a href="#" data-popup="Ajouter un compte paypal">
+                    <i class="fas fa-2x fa-paypal"></i>
+                </a>
+                <a href="#" data-popup="Ajouter une carte bancaire">
+                    <i class="fas fa-2x fa-cc-visa"></i>
+                </a>
+
+            </div>
+            <div class="p-3 bg-black text-white">
+                <h6>Inscrit depuis le : {{ user.date_joined|date:"d/m/Y" }}</h6>
+            </div>
+            <div class="d-flex flex-row text-white box-prfl">
+                <div class="p-4 bg-primary text-center skill-block">
+                    <h6><i class="fas fa-2x fa-address-book"></i></h6>
+                    <br>
+                    <h4>{{ profile.city }}</h4>
+                </div>
+                <div class="p-3 bg-success text-center skill-block">
+                    <h6><i class="fas fa-2x fa-city"></i></h6>
+                    <br>
+                    <h4>{{ profile.zip_code }}</h4>
+                </div>
+                <div class="p-3 bg-warning text-center skill-block">
+                    <h6><i class="fas fa-2x fa-phone"></i></h6>
+                    <br>
+                    <h4>{{ profile.phone }}</h4>
+                </div>
+                <div class="p-3 bg-danger text-center skill-block">
+                    <h6><i class="fas fa-2x fa-globe"></i></h6>
+                    <br>
+                    <h4>{{ profile.country }}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <a href="{% url 'edit_profile' %}">
+        <button class="btn updt-profile btn-success fs-5">Modifier mon profile</button>
+    </a>
+</div>
+
+
+
+{% comment %}
+<div class="title text-center mb-5">
+    <h1>Mes infos</h1>
+</div>
+{% if user.is_authenticated %}
+<div class="profile text-center">
+    <img src="{{ profile.image.url }}" alt="img" style="width: 25%; border-radius:100px;" class="mb-4 ">
+    <div class="mb-4">
+        <h2>Username: {{ user.username }}</h2>
+    </div>
+    <div class="mb-4">
+        <h2>Email: {{ user.email }}</h2>
+    </div>
+    <div class="mb-4">
+        <h2>First Name: {{ user.first_name }}</h2>
+    </div>
+    <div class="mb-4">
+        <h2>Last Name: {{ user.last_name }}</h2>
+    </div>
+    <div class="mb-2">
+        <h2>Address: {{ user.profile.address }}</h2>
+    </div>
+    <div class="mb-4">
+        <h2>Phone Number: {{ user.profile.phone_number }}</h2>
+    </div>
+    <div class="mb-4">
+        <h2>City: {{ user.profile.city }}</h2>
+    </div>
+    <div class="mb-4">
+        <h2>Zip Code: {{ user.profile.zip_code }}</h2>
+    </div>
+    <div class="mb-4">
+        <h2>Country: {{ user.profile.country }}</h2>
+    </div>
+    <div class="mb-4">
+        <h2 class="mb-2">State: {{ user.profile.state }}</h2>
+    </div>
+</div>
+{% endif %}
+<a href="{% url 'edit-profile' %}" class="btn btn-primary">Update</a>
+{% endcomment %}
+{% endblock %}
