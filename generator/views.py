@@ -27,7 +27,6 @@ def home(request):
             passwd = ''.join(random.sample(prep, k=password_length))
             print(passwd)
             p = GenPass.objects.create(site=site, passwords=passwd, user=user)
-
             p.save()
             context = {
                 'password': passwd,

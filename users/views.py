@@ -1,154 +1,85 @@
 from django.contrib import messages
-from django.contrib.auth import get_user_model, logout, login, authenticate
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import login
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views import View
+from django.views.generic.edit import FormView
 
-from .forms import RegisterForm, UserRegisterForm, UserUpdateForm, ProfileUpdateForm
-from .models import Profile
-
-from django.shortcuts import render
-from .forms import LoginForm
-
-
-def sign_in(request):
-
-    if request.method == 'GET':
-        if request.user.is_authenticated:
-            return redirect('home')
-
-        form = LoginForm()
-        return render(request, 'users/login.html', {'form': form})
-
-    elif request.method == 'POST':
-        form = LoginForm(request.POST)
-
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            if user := authenticate(
-                request, username=username, password=password
-            ):
-                login(request, user)
-                messages.success(
-                    request, f'Hi {username.title()}, welcome back!')
-                return redirect('home')
-
-        # either form not valid or user is not authenticated
-        messages.error(request, 'Invalid username or password')
-        return render(request, 'users/login.html', {'form': form})
+from users.forms import RegisterForm, UserUpdateForm, ProfileUpdateForm
 
 
-def sign_out(request):
-    logout(request)
-    messages.success(request, 'You have been logged out.')
-    return redirect('login')
+from django.contrib.auth.views import (
+    LogoutView,
+    PasswordResetView,
+    PasswordResetDoneView,
+    PasswordResetConfirmView,
+    PasswordResetCompleteView
+)
 
 
-def sign_up(request):
-    if request.method == 'GET':
-        form = RegisterForm()
-        return render(request, 'users/register.html', {'form': form})
 
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            return _extracted_from_sign_up_9(form, request)
-        else:
-            return render(request, 'users/register.html', {'form': form})
-    return render(request, 'users/register.html', {'form': form})
-
-
-# TODO Rename this here and in `sign_up`
-def _extracted_from_sign_up_9(form, request):
-    user = form.save(commit=False)
-    user.username = user.username.lower()
-    user.save()
-    messages.success(request, 'You have singed up successfully.')
-    login(request, user)
-    return redirect('home')
+class RegisterView(FormView):
+    template_name = 'users/register.html'
+    form_class = RegisterForm
+    redirect_authenticated_user = True
+    success_url = reverse_lazy('home')
     
+    def form_valid(self, form):
+        if user := form.save():
+            login(self.request, user)
+            messages.success(self.request, f'Account created for {user.username}!')
 
-User = get_user_model()
+        return super(RegisterView, self).form_valid(form)
+    
+    
+class MyLoginView(LoginView):
+    template_name = 'users/login.html'
+    redirect_authenticated_user = True
+    
+    def get_success_url(self):
+        return reverse_lazy('home')
+    
+    def form_invalid(self, form):
+        messages.error(self.request,'Invalid username or password')
+        return self.render_to_response(self.get_context_data(form=form))
 
-def login_user(request):
-    if request.method == "POST":
-        # traiter le formulaire
-        username = request.POST.get("username")
-        password = request.POST.get("password")
+class MyProfile(LoginRequiredMixin, View):
+    def get(self, request):
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = ProfileUpdateForm(instance=request.user.profile)
 
-        if user := authenticate(request, username=username, password=password):
-            login(request, user)
-            return redirect('home')
-
-    return render(request, 'users/login.html')
-
-def logout_user(request):
-    logout(request)
-    return redirect('home')
-
-
-def register(request):
-    user = request.user
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        password2 = request.POST.get('password2')
-        if form.is_valid():
-            return _extracted_from_register_9(user, request)
-    else:
-        form = UserRegisterForm()
         context = {
-            'form': form,
-            'title': 'Inscription',
-            'username': username,
-            'email': email,
-            'password': password,
-            'password2': password2,
-            }
+            'user_form': user_form,
+            'profile_form': profile_form
+        }
 
-    return render(request, 'users/register.html', context)
+        return render(request, 'users/profile.html', context)
 
+    def post(self, request):
+        user_form = UserUpdateForm(
+            request.POST,
+            instance=request.user
+        )
+        profile_form = ProfileUpdateForm(
+            request.POST,
+            request.FILES,
+            instance=request.user.profile
+        )
 
-# TODO Rename this here and in `register`
-def _extracted_from_register_9(user, request):
-    form.save()
-    profile = Profile.objects.create(user=user)
-    profile.save()
-    username = form.cleaned_data.get('username')
-    messages.success(
-        request,
-        'Votre compte a été créé avec succès ! Vous pouvez vous connecter.',
-    )
-    return redirect('login')
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
 
-
-
-@login_required
-def profile(request):
-    user = request.user
-
-    profile = get.object_or_404(Profile, user=user)
-    return render(request, 'users/profile.html', {'profile': profile})
-
-
-@login_required
-def updt_profile(request):
-    if request.method == 'POST':
-        u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-
-        if u_form.is_valid() and p_form.is_valid():
-            u_form.save()
-            p_form.save()
-            messages.success(request, 'Votre compte a été mis à jour !')
+            messages.success(request, 'Your profile has been updated successfully')
 
             return redirect('profile')
-    else:
-        u_form = UserUpdateForm(instance=request.user)
-        p_form = ProfileUpdateForm(instance=request.user.profile)
-    context = {'u_form': u_form, 'p_form': p_form}
+        else:
+            context = {
+                'user_form': user_form,
+                'profile_form': profile_form
+            }
+            messages.error(request, 'Error updating you profile')
 
-    return render(request, 'users/updt-profile.html', context)
-
-
+            return render(request, 'users/profile.html', context)
