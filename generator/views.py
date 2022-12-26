@@ -13,6 +13,7 @@ User = get_user_model()
 
 
 class Index(View):
+
 	def get(self, request):
 		form = PassGenForm()
 
@@ -31,14 +32,13 @@ class Index(View):
 			if form.cleaned_data['remove_similar_characters']:
 				ambiguous_characters = ['Z', '2', 'l', '1', '0', 'O', 'o']
 				available_characters = re.sub('|'.join(ambiguous_characters), '', available_characters)
-			password = ''.join(random.choice(available_characters) for i in range(form.cleaned_data['length']))
+			password = ''.join(random.choice(available_characters)
+                for _ in range(form.cleaned_data['length']))
 		return render(request, 'generator/password.html', {'password': password})
 
 def home(request):
-
     if request.method == "POST":
         site = request.POST.get('site')
-        user = request.POST.get('user.username')
         if site == "":
             messages = "Please enter a site name"
             context = {'messages': messages}
@@ -49,18 +49,17 @@ def home(request):
             context = {'message': message}
             return render(request, 'generator/home.html', context)
         else:
-            user = request.user
+
             numbers = '1234567890'
             small_letters = "qwertyuioplkjhgfdsazxcvbnm"
             prep = f"!@#$%^&**()_+{numbers}{small_letters}QWERTYUIOPASDFGHJKLMNBVCXZ"
             passwd = ''.join(random.sample(prep, k=password_length))
             print(passwd)
-            p = GenPass.objects.create(site=site, passwords=passwd, user=user)
+            p = GenPass.objects.create(site=site, passwords=passwd)
             p.save()
             context = {
                 'password': passwd,
                 'site': site,
-                'user': user,
             }
             return render(request, 'generator/success.html', context)
     return render(request, "generator/home.html")

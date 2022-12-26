@@ -1,10 +1,11 @@
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
+from accounts.models import CustomUser
+
 
 # Create your models here.
 class GenPass(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     site = models.CharField(max_length=30)
     time = models.DateTimeField(default=timezone.now)
     passwords = models.CharField(max_length=300)
@@ -14,7 +15,7 @@ class GenPass(models.Model):
 
     class Meta:
         verbose_name = 'genpass'
-        verbose_name_plural = 'genpasses'
+        verbose_name_plural = 'liste mots de passe'
         ordering = ['user']
 
 

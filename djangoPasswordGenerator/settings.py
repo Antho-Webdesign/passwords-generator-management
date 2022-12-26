@@ -29,10 +29,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_bootstrap5',
     'generator',
-    'users',
+    # 'users',
     'crispy_forms',
     'fontawesomefree',
-    # 'portfolio.apps.PortfolioConfig',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -121,7 +121,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-
+AUTH_USER_MODEL  =  "accounts.CustomUser"
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'

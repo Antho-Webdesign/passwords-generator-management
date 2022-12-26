@@ -2,20 +2,22 @@
 {% load static %}
 
 {% block content %}
-<div class="card bg-dark">
-		<form method="POST">
-			{% csrf_token %}
 
-			<p class="lengthRange"><span id="lengthRange"></span></p>
-			{% for field in form %}
-			<div class="inputContainer">
-				{{ field.errors }}
-				{{ field.label_tag }} {{ field }}
-			</div>
-			{% endfor %}
+    <h1 class="text-center"> Password Generator </h1>
+    <div class="card bg-dark" style="width: 100%; flex-direction: column">
+        <form method="POST" class="d-flex justify-center flex-col" style="flex-direction: column; justify-content: center; margin: auto;">
+            {% csrf_token %}
+            <p class="lengthRange"><span id="lengthRange"></span></p>
+            {% for field in form %}
+                <div class="inputContainer">
+                    {{ field.errors }}
+                    {{ field.label_tag }} {{ field }}
+                </div>
+            {% endfor %}
 
-			<button class="submitButton">Generate</button>
-		</form>
+            <button class="submitButton">Generate</button>
+        </form>
+    <p class="password">Ici {{ password }}</p>
 	</div>
 
 	<script>
