@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="title">
+        <h1>Password Generator</h1>
+    </div>
+    <!-- formulaire PassGenForm -->
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Generate">
+    </form>
+    <!-- affichage du mot de passe généré -->
+    <div class="password">
+        <h2>{{ password }}</h2>
+    </div>
+
+{% endblock %}
