@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<style>
+
+.box-btn {
+  display: flex;
+  justify-content: space-around;
+}
+
+</style>
 <div class="container">
     <div class="row">
 
@@ -18,7 +26,7 @@
                 <input type="password" class="form-control mb-5" id="password" name="password" placeholder="Enter password">
             </div>
 
-            <div class="box-btn">
+            <div class="box-btn mt-3 mb-5">
                 <div class="btn-left">
                     <button type="submit" class="btn btn-success">Connexion</button>
                 </div>
@@ -27,7 +35,8 @@
                 </div>
             </div>
         </form>
-        <p class="text-center">Vous n'avez pas de compte ? <a href="{% url 'signup' %}">Inscrivez-vous</a></p>
+        <p class="text-center">Vous n'avez pas de compte ?
+            <a class=" text-info" href="{% url 'signup' %}">Inscrivez-vous</a></p>
 
     </div>
 </div>
