@@ -42,6 +42,11 @@ div.d-flex:nth-child(3) {
     margin: 20px auto;
 }
 
+div.d-flex:nth-child(1) {
+  width: 90%;
+  margin: auto;
+}
+
 @media screen and (max-width: 600px) {
 
     .box-prfl {
@@ -66,19 +71,14 @@ div.d-flex:nth-child(3) {
             <div class="d-flex flex-row justify-content-between align-items-center p-5 bg-dark text-white">
                 <h3 class="display-5">{{ profile.user.username }}</h3>
 
-                <a class="nav-link" href="">
-                    <i href="" class="fa fa-2x fa-cart-plus"></i>
-                    <!-- <img src="media/images/panier.png" alt="" style="width:25%"> -->
-                    {{ profile.address }}
-                </a>
                 <a href="{% url 'profile' %}">
                     <i class="fa fa-2x fa-user"></i>
                 </a>
-                <a href="#" data-popup="Ajouter un compte paypal">
-                    <i class="fas fa-2x fa-paypal"></i>
+                <a href="{% url 'search' %}" data-popup="Rechercher">
+                    <i class="fa-solid fa-2x fa-magnifying-glass"></i>
                 </a>
-                <a href="#" data-popup="Ajouter une carte bancaire">
-                    <i class="fas fa-2x fa-cc-visa"></i>
+                <a href="{% url 'listall' %}" data-popup="Liste des mots de passese">
+                    <i class="fa-solid fa-2x fa-lock"></i>
                 </a>
 
             </div>
