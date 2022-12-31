@@ -1,12 +1,10 @@
 from django.contrib.auth.models import AbstractUser
-from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
 # Create your models here.
 class Customer(AbstractUser):
     pass
-
 
 class Profile(models.Model):
     user = models.OneToOneField(Customer, on_delete=models.CASCADE)

@@ -5,7 +5,7 @@ from accounts.models import Customer
 
 # Create your models here.
 class GenPass(models.Model):
-    user = models.OneToOneField(Customer, on_delete=models.CASCADE)
+    user = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
     site = models.CharField(max_length=30)
     time = models.DateTimeField(default=timezone.now)
     passwords = models.CharField(max_length=300)

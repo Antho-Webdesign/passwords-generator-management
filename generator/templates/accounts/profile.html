@@ -10,6 +10,12 @@ div.d-flex:nth-child(3) {
   justify-content: center;
 }
 
+.box-prfl {
+    justify-content: center;
+    margin: 50px auto;
+    width: 100%;
+}
+
 .img-profile {
     width: 15%;
     height: 15%;
@@ -17,6 +23,25 @@ div.d-flex:nth-child(3) {
     margin: 0 auto;
     display: block;
 }
+
+.skill-block {
+  width: 20%;
+}
+
+.date_inscr {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.updt-profile {
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    margin: 20px auto;
+}
+
 @media screen and (max-width: 600px) {
     .box-prfl {
         display: flex !important;
@@ -55,11 +80,9 @@ div.d-flex:nth-child(3) {
                 </a>
 
             </div>
-            <div class="p-3 bg-black text-white">
-                <h6>Inscrit depuis le : {{ user.date_joined|date:"d/m/Y" }}</h6>
-            </div>
+
             <div class="d-flex flex-row text-white box-prfl">
-                <div class="p-4 bg-primary text-center skill-block">
+                <div class="p-3 bg-primary text-center skill-block">
                     <h6><i class="fas fa-2x fa-address-book"></i></h6>
                     <br>
                     <h4>{{ profile.city }}</h4>
@@ -80,6 +103,11 @@ div.d-flex:nth-child(3) {
                     <h4>{{ profile.country }}</h4>
                 </div>
             </div>
+
+            <div class="p-3 bg-black text-white date_inscr">
+                <h6>Inscrit depuis le : {{ user.date_joined|date:"d/m/Y" }}</h6>
+            </div>
+
         </div>
     </div>
     {% endif %}

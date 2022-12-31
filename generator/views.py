@@ -11,6 +11,36 @@ User = get_user_model()
 
 # Create your views here.
 
+def home(request):
+    if request.method != "POST":
+        return render(request, 'generator/home.html')
+    else:
+        site = request.POST.get('site')
+        if site == "":
+            return render(request, 'generator/home.html')
+        password_length = int(request.POST.get('length'))
+        characters = "!@#$%^&**()_+"
+        numbers = '1234567890'
+        small_letters = "qwertyuioplkjhgfdsazxcvbnm"
+        upper_case = "QWERTYUIOPASDFGHJKLMNBVCXZ"
+        prep = characters + numbers + small_letters + upper_case
+        if password_length > 30:
+            message = "can't generate password more than 30 characters"
+            context = {
+                'message': message
+            }
+            return render(request, 'generator/home.html', context)
+
+        else:
+            passwd = ''.join(random.sample(prep, k=password_length))
+            print(passwd)
+            p = GenPass.objects.create(site=site, passwords=passwd, user=request.user)
+            p.save()
+            context = {
+                'password': passwd
+            }
+            return render(request, 'generator/home.html', context)
+
 
 class Index(View):
 
@@ -18,7 +48,7 @@ class Index(View):
 		form = PassGenForm()
 
 		context = {'form': form}
-		return render(request, 'users/generer.html', context)
+		return render(request, 'accounts/generer.html', context)
 
 	def post(self, request):
 		form = PassGenForm(request.POST)
@@ -36,45 +66,18 @@ class Index(View):
                 for _ in range(form.cleaned_data['length']))
 		return render(request, 'generator/password.html', {'password': password})
 
-def home(request):
-    if request.method == "POST":
-        site = request.POST.get('site')
-        if site == "":
-            messages = "Please enter a site name"
-            context = {'messages': messages}
-            return render(request, 'generator/home.html', context)
-        password_length = int(request.POST.get('length'))
-        if password_length > 30:
-            message = "can't generate password more than 30 characters"
-            context = {'message': message}
-            return render(request, 'generator/home.html', context)
-        else:
-            numbers = '1234567890'
-            small_letters = "qwertyuioplkjhgfdsazxcvbnm"
-            prep = f"!@#$%^&**()_+{numbers}{small_letters}QWERTYUIOPASDFGHJKLMNBVCXZ"
-            passwd = ''.join(random.sample(prep, k=password_length))
-            print(passwd)
-            p = GenPass.objects.create(site=site, passwords=passwd)
-            p.save()
-            context = {
-                'password': passwd,
-                'site': site,
-            }
-            return render(request, 'generator/success.html', context)
-    return render(request, "generator/home.html")
 
-
-@login_required
 def listall(request):
+    results = GenPass.objects.all()
     user = request.user
     items = GenPass.objects.filter(user=user)
-    results = GenPass.objects.filter(user=user)
     context = {
         'results': results,
         'items': items,
         'user': user,
     }
-    return render(request, 'generator/listalll.html', context)
+    return render(request, 'generator/listalll.html',context)
+
 
 
 def search(request):

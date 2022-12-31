@@ -19,13 +19,18 @@ def signup(request):
         password = request.POST.get("password")
         password2 = request.POST.get("password2")
         if password == password2:
-            user = User.objects.create_user(username, email, password)
+            user = User.objects.create_user(username, email, password, password2)
             profile = Profile.objects.create(user=user)
             user.save()
             profile.save()
-            return redirect('login')
+            login(request, user)
+            return redirect('home')
         else:
-            return redirect('signup')
+            message = "Passwords do not match"
+            msg = {
+                'message': message
+            }
+            return render(request, 'accounts/signup.html', msg)
     return render(request, 'accounts/signup.html')
 
 def login_user(request):
