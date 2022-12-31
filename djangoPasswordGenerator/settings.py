@@ -27,13 +27,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'pwa',
     'django_bootstrap5',
     'generator',
     'users',
     'crispy_forms',
     'fontawesomefree',
-    'django.contrib.sites',
     # 'pwa_webpush',
     # 'portfolio.apps.PortfolioConfig',
 ]
