@@ -2,13 +2,27 @@
 {% load static %}
 
 {% block content %}
+<style>
+
+table {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+
+td {
+    padding: 10px;
+    border: solid 1px grey;
+}
+
+</style>
     <div>
         <h1 class="text-center">Mon coffre fort</h1>
     </div>
 
-    {% if user != 'user.username' %}
 
-        {% for i in items %}
+
+
         <table>
             <tr>
                 <td>Site</td>
@@ -17,6 +31,7 @@
                 <td></td>
             </tr>
 
+            {% for i in items %}
             <tr>
                 <td>{{ i.site }}</td>
                 <td>{{ i.time }}</td>
@@ -27,10 +42,8 @@
                         <button type="button" class="btn btn-danger btn-sm">Supprimer</button>
                     </a>
                 </td>
-
             </tr>
+            {% endfor %}
         </table>
-    {% endfor %}
-{% endif %}
 
 {% endblock %}

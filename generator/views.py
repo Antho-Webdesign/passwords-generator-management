@@ -4,8 +4,6 @@ import random
 from .models import GenPass
 
 
-# Create your views here.
-
 def home(request):
     if request.method == "POST":
         site = request.POST.get('site')

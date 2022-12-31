@@ -4,7 +4,40 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<style>
 
+
+/* Élément | http://127.0.0.1:8000/profile/ */
+
+.media-body {
+  width: 100%;
+  display: flex;
+}
+
+table {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+
+td {
+    padding: 10px;
+    border: solid 1px grey;
+}
+
+.account-img {
+    display: flex;
+    width: 25%;
+    justify-content: center;
+    margin: auto;
+}
+
+.btn {
+    width: 15%;
+    margin: 30px auto;
+}
+
+</style>
     <!-- ========= Affichage des Informations ========= -->
     <div class="content-section">
         <h2 class="text-center mb-5">Mes informations</h2>
@@ -29,7 +62,7 @@
                         </tr>
                     </table>
                 </div>
-                <a class="btn btn-info" href="{% url 'updt_profile' %}">
+                <a class="btn btn-info" style="width: 15%; display:flex;  justify-content: center; margin: 30px auto;" href="{% url 'updt_profile' %}">
                     <strong>Modifier mon profile</strong>
                 </a>
             </div>
