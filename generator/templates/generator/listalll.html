@@ -7,32 +7,34 @@
     </div>
 
     <div class="container">
-        {% for i in items %}
+
         <table class="border border-1">
             <tr>
-                <td class="border border-1 fs-3 p-5">Site</td>
-                <td class="border border-1 fs-3 p-5">Enregistrer le</td>
-                <td class="border border-1 fs-3 p-5">MDP généré</td>
+                <td class="border border-1 fs-2 p-5">Site</td>
+                <td class="border border-1 fs-2 p-5">Enregistrer le</td>
+                <td class="border border-1 fs-2 p-5">MDP généré</td>
+                <td></td>
                 <td></td>
             </tr>
 
-            <tr>
-                <td class="border border-1 fs-3 p-5">{{ i.site }}</td>
-                <td class="border border-1 fs-3 p-5">{{ i.time }}</td>
-                <td class="border border-1 fs-3 p-5">{{ i.passwords }}</td>
-
-                <td>
-                    <a href="{% url 'deleterecord' i.id %}">
-                        <button type="button" class="btn btn-danger btn-sm">Supprimer</button>
-                    </a>
-                </td>
-
-            </tr>
+            {% for i in items %}
+                <tr>
+                    <td class="border border-1 fs-5 p-5">{{ i.site }}</td>
+                    <td class="border border-1 fs-5 p-5">{{ i.time }}</td>
+                    <td class="border border-1 fs-5 p-5">{{ i.passwords }}</td>
+                    <td>
+                        <a href="#">
+                            <button type="button" class="btn btn-info btn-sm">Modifier</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'deleterecord' i.id %}">
+                            <button type="button" class="btn btn-danger btn-sm">Supprimer</button>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
         </table>
-    {% endfor %}
     </div>
-    {% for i in results %}
-       {{ i.site }}
-    {% endfor %}
 
 {% endblock %}
