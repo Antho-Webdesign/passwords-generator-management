@@ -58,31 +58,37 @@
         <nav class="navbar navliste">
             <ul class="ullist">
                 <li>
-                    <!--<i class="fa fa-house"></i>-->
-                    <a href="{% url 'home' %}">Accueil</a>
-                </li>
 
-                <li>
-                    <!--<i class="fa fa-house"></i>-->
-                    <a href="{% url 'index' %}">tst</a>
-                </li>
-
-                <li>
-                    <a href="{% url 'listall' %}">Coffre-fort</a>
-                </li>
-
-                <li>
-                    <a href="{% url 'search' %}">Rechercher</a>
+                    <a href="{% url 'home' %}">
+                        <i class="fa fa-house"></i>
+                    </a>
                 </li>
 
                 {% if user.is_authenticated %}
                     <li>
-                        <a href="{% url 'logout' %}">Déconnexion</a> <!-- { url 'logout' } -->
+                        <a href="{% url 'listall' %}">
+                            <i class="fa-solid fa-lock"></i>
+                        </a>
                     </li>
 
                     <li>
-                        <a href="{% url 'profile' %}">Mon profil</a> <!-- { url 'profile' } -->
+                        <a href="{% url 'search' %}">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
                     </li>
+
+                    <li>
+                        <a href="{% url 'profile' %}">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'logout' %}">
+                            <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
+                        </a>
+                    </li>
+
                 {% else %}
                     <li>
                         <a href="{% url 'login' %}">Connexion</a> <!-- { url 'login' } -->
@@ -91,8 +97,8 @@
                     <li>
                         <a href="{% url 'signup' %}">Inscription</a> <!-- { url 'register' } -->
                     </li>
-                {% endif %}
 
+                {% endif %}
             </ul>
         </nav>
     </header>
