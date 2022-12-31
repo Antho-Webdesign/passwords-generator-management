@@ -2,19 +2,33 @@
 {% load static %}
 
 {% block content %}
+<style>
 
+.form-gen {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  justify-content: center;
+  margin: auto;
+}
+
+.btn-generer {
+  width: 20%;
+  margin: auto;
+}
+</style>
     <div>
-        <h1 class="text-center">Generer un mdp</h1>
+        <h1 class="text-center mt-5 mb-5">Generer un mdp</h1>
     </div>
 
     <div class="content">
-        <form method="POST">
+        <form class="form-gen" method="POST">
             {% csrf_token %}
-            <label for="site">Nom du site :</label>
-                <input type="text" name="site" id="site">
+            <label class="mb-2" for="site">Nom du site :</label>
+                <input class="mb-5" type="text" name="site" id="site">
 
-            <label for="lenght">Nombre de caractères :</label>
-                <input type="text" name="length" id="lenght" placeholder="length of password">
+            <label class="mb-2" for="lenght">Nombre de caractères :</label>
+                <input class="mb-5" type="text" name="length" id="lenght" placeholder="length of password">
 
             <input class="btn btn-success btn-generer" type="submit" value="Générer">
         </form>
