@@ -2,64 +2,79 @@
 {% load static %}
 
 {% block content %}
-<style>
+    <style>
 
-.homeform {
-  display: flex;
-  flex-direction: column;
-  width: 65%;
-  justify-content: center;
-  margin: auto;
-}
+        .homeform {
+            display: flex;
+            flex-direction: column;
+            width: 66%;
+            justify-content: center;
+            margin: auto;
+        }
 
-.inputclass {
-  padding: 10px;
-  border-radius: 20px;
-  margin-bottom: 45px;
-}
+        .inputclass {
+            padding: 10px;
+            border-radius: 20px;
+            margin-bottom: 45px;
+        }
 
-.labelclass {
-  margin-bottom: 10px;
-}
+        .labelclass {
+            margin-bottom: 10px;
+        }
 
-.btn-rechercher {
-  width: 33%;
-  justify-content: center;
-  display: flex;
-  margin: 30px auto;
-  border-radius: 10px;
-}
-</style>
+        .btn-rechercher {
+            width: 33%;
+            justify-content: center;
+            display: flex;
+            margin: 30px auto;
+            border-radius: 10px;
+        }
+
+        .box-search {
+            width: 100%;
+            display: flex;
+        }
+
+
+    </style>
     <h1 class="text-center">Rechercher un mot de passe</h1>
-    <div>
+    <div class="box-search">
         <form method="POST" class="form-search homeform">
             {% csrf_token %}
             <label class="labelclass" for="site">Pour le site :</label>
-                <input class="inputclass" type="text" name="site" id="site">
+            <input class="inputclass" type="text" name="site" id="site">
 
             <input type="submit" class="btn btn-success btn-rechercher" value="Rechercher">
         </form>
     </div>
 
-    <div class="box-result-search">
-        {% for data in results %}
-
-            <table>
+    {% for data in results %}
+        <div class="container">
+            <table class="border border-1">
                 <tr>
-                    <th>Site</th>
-                    <th>Enregistrer le</th>
-                    <th>Mot de passe généré</th>
+                    <td class="border border-1 fs-2 p-5">Site</td>
+                    <td class="border border-1 fs-2 p-5">Enregistrer le</td>
+                    <td class="border border-1 fs-2 p-5">MDP généré</td>
+                    <td></td>
+                    <td></td>
                 </tr>
 
                 <tr>
-                    <td>{{ data.site }}</td>
-                    <td>{{ data.time }}</td>
-                    <td>{{ data.passwords }}</td>
+                    <td class="border border-1 fs-5 p-5">{{ data.site }}</td>
+                    <td class="border border-1 fs-5 p-5">{{ data.time }}</td>
+                    <td class="border border-1 fs-5 p-5">{{ data.passwords }}</td>
+                    <td>
+                        <a href="#">
+                            <button type="button" class="btn btn-info btn-sm">Modifier</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'deleterecord' data.id %}">
+                            <button type="button" class="btn btn-danger btn-sm">Supprimer</button>
+                        </a>
+                    </td>
                 </tr>
             </table>
-
-        {% endfor %}
-    </div>
-
-
+        </div>
+    {% endfor %}
 {% endblock %}
