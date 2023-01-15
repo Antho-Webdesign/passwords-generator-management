@@ -9,7 +9,6 @@ import re
 
 User = get_user_model()
 
-# Create your views here.
 
 def home(request):
     if request.method != "POST":
@@ -41,6 +40,7 @@ def home(request):
             }
             return render(request, 'generator/home.html', context)
 
+
 def listall(request):
     results = GenPass.objects.all()
     user = request.user
@@ -50,8 +50,7 @@ def listall(request):
         'items': items,
         'user': user,
     }
-    return render(request, 'generator/listalll.html',context)
-
+    return render(request, 'generator/listalll.html', context)
 
 
 def search(request):
@@ -70,4 +69,3 @@ def deleterecord(request, id):
 
 def home_test(request):
     return render(request, 'generator/home-test.html')
-
