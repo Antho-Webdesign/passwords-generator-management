@@ -2,35 +2,35 @@
 {% load static %}
 
 {% block content %}
-<style>
+    <style>
 
-.homeform {
-  display: flex !important;
-  flex-direction: column !important;
-  width: 66% !important;
-  justify-content: center;
-  margin: auto;
-}
+        .homeform {
+            display: flex !important;
+            flex-direction: column !important;
+            width: 66% !important;
+            justify-content: center;
+            margin: auto;
+        }
 
-.inputclass {
-  height: 55px;
-  border-radius: 20px;
-  margin-bottom: 45px;
-}
+        .inputclass {
+            height: 55px;
+            border-radius: 20px;
+            margin-bottom: 45px;
+        }
 
-.labelclass {
-  margin-bottom: 10px;
-}
+        .labelclass {
+            margin-bottom: 10px;
+        }
 
-.btn-generer {
-  width: 33%;
-  justify-content: center;
-  display: flex;
-  margin: 30px auto;
-  border-radius: 10px;
-}
+        .btn-generer {
+            width: 33%;
+            justify-content: center;
+            display: flex;
+            margin: 30px auto;
+            border-radius: 10px;
+        }
 
-</style>
+    </style>
     <div class=" mt-5 mb-5">
         <h1 class="text-center">Generer un mdp</h1>
     </div>
@@ -39,10 +39,10 @@
         <form class="homeform" method="POST">
             {% csrf_token %}
             <label class="labelclass" for="site">Nom du site :</label>
-                <input type="text" name="site" id="site" class="inputclass">
+            <input type="text" name="site" id="site" class="inputclass">
 
             <label class="labelclass" for="lenght">Nombre de caractères :</label>
-                <input type="text" name="length" id="lenght" class="inputclass" placeholder="length of password">
+            <input type="text" name="length" id="lenght" class="inputclass" placeholder="length of password">
 
             {% if user.is_authenticated %}
                 <input class="btn btn-success btn-generer" type="submit" value="Générer">
