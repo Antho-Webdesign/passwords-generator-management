@@ -2,125 +2,156 @@
 {% load static %}
 
 {% block content %}
-<style>
+    <style>
 
-div.d-flex:nth-child(3) {
-  display: flex !important;
-  width: 100%;
-  justify-content: center;
-}
+        div.d-flex:nth-child(3) {
+            display: flex !important;
+            width: 100%;
+            justify-content: center;
+        }
 
-.box-prfl {
-    justify-content: center;
-    margin: 50px auto;
-    width: 100%;
-}
+        .box-prfl {
+            justify-content: center;
+            margin: 50px auto;
+            width: 100%;
+        }
 
-.img-profile {
-    width: 15%;
-    height: 15%;
-    border-radius: 50%;
-    margin: 0 auto;
-    display: block;
-}
+        .img-profile {
+            width: 15%;
+            height: 15%;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: block;
+        }
 
-.skill-block {
-  width: 20%;
-}
+        .skill-block {
+            width: 20%;
+        }
 
-.date_inscr {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    margin: 20px auto;
-}
+        .date_inscr {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            margin: 20px auto;
+        }
 
-.updt-profile {
-    display: flex;
-    width: 20%;
-    justify-content: center;
-    margin: 20px auto;
-}
+        .updt-profile {
+            display: flex;
+            width: 20%;
+            justify-content: center;
+            margin: 20px auto;
+        }
 
-div.d-flex:nth-child(1) {
-  width: 90%;
-  margin: auto;
-}
+        div.d-flex:nth-child(1) {
+            width: 90%;
+            margin: auto;
+        }
 
-@media screen and (max-width: 600px) {
 
-    .box-prfl {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center;
-        width: 100%;
-    }
+        .form-updt-img-profile {
+            width: 90%;
+            justify-content: center;
+            margin: auto;
+            border-top: solid 1px grey;
+            border-bottom: solid 1px grey;
+        }
 
-    .skill-block {
-        width: 100%;
-    }
-}
-</style>
-<div class="container-profile mt-5 mb-5">
-    {% if user.is_authenticated %}
-    <div class="row no-gutters">
-        <img class="img-profile" src="{{ profile.image.url }}" alt="{{ profile.user.username }}">
+        .form-lbl {
+          margin: 40px auto;
+          justify-content: center;
+          display: flex;
+        }
 
-        <div class="d-flex flex-column">
-            <div class="d-flex flex-row justify-content-between align-items-center p-5 bg-dark text-white">
-                <h3 class="display-5">{{ profile.user.username }}</h3>
+        .input-updt-img-profile {
+          width: 33%;
+          justify-content: center;
+          margin: auto;
+          display: flex;
+        }
 
-                <a href="{% url 'profile' %}">
-                    <i class="fa fa-2x fa-user"></i>
-                </a>
-                <a href="{% url 'search' %}" data-popup="Rechercher">
-                    <i class="fa-solid fa-2x fa-magnifying-glass"></i>
-                </a>
-                <a href="{% url 'listall' %}" data-popup="Liste des mots de passese">
-                    <i class="fa-solid fa-2x fa-lock"></i>
-                </a>
+        @media screen and (max-width: 600px) {
 
+            .box-prfl {
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center;
+                width: 100%;
+            }
+
+            .skill-block {
+                width: 100%;
+            }
+        }
+    </style>
+    <div class="container-profile mt-5 mb-5">
+        {% if user.is_authenticated %}
+            <div class="row no-gutters">
+
+                <img class="img-profile mb-2" src="{{ profile.image.url }}" alt="{{ profile.user.username }}">
+
+                <form method="post" enctype="multipart/form-data" class="bg-dark mt-5 text-light form-updt-img-profile">
+                    {% csrf_token %}
+                    <label class="form-lbl mb-5 text-light" for="image">Modifier mon image de profil</label>
+                    <input type="file" name="image" id="image" value="{{ profile.image.url }}" class="input-updt-img-profile">
+
+                    <input type="submit" value="Valider" class="btn btn-light btn-updt-img"/>
+                </form>
+
+                <div class="d-flex flex-column">
+                    <div class="d-flex flex-row justify-content-between align-items-center p-5 bg-dark text-white">
+                        <h3 class="display-5">{{ profile.user.username }}</h3>
+
+                        <a href="{% url 'profile' %}">
+                            <i class="fa fa-2x fa-user"></i>
+                        </a>
+                        <a href="{% url 'search' %}" data-popup="Rechercher">
+                            <i class="fa-solid fa-2x fa-magnifying-glass"></i>
+                        </a>
+                        <a href="{% url 'listall' %}" data-popup="Liste des mots de passese">
+                            <i class="fa-solid fa-2x fa-lock"></i>
+                        </a>
+
+                    </div>
+
+                    <div class="d-flex flex-row text-white box-prfl">
+                        <div class="p-3 bg-primary text-center skill-block">
+                            <h6><i class="fas fa-2x fa-address-book"></i></h6>
+                            <br>
+                            <h4>{{ profile.city }}</h4>
+                        </div>
+                        <div class="p-3 bg-success text-center skill-block">
+                            <h6><i class="fas fa-2x fa-city"></i></h6>
+                            <br>
+                            <h4>{{ profile.zip_code }}</h4>
+                        </div>
+                        <div class="p-3 bg-warning text-center skill-block">
+                            <h6><i class="fas fa-2x fa-phone"></i></h6>
+                            <br>
+                            <h4>{{ profile.phone }}</h4>
+                        </div>
+                        <div class="p-3 bg-danger text-center skill-block">
+                            <h6><i class="fas fa-2x fa-globe"></i></h6>
+                            <br>
+                            <h4>{{ profile.country }}</h4>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-black text-white date_inscr">
+                        <h6>Inscrit depuis le : {{ user.date_joined|date:"d/m/Y" }}</h6>
+                    </div>
+
+                </div>
             </div>
-
-            <div class="d-flex flex-row text-white box-prfl">
-                <div class="p-3 bg-primary text-center skill-block">
-                    <h6><i class="fas fa-2x fa-address-book"></i></h6>
-                    <br>
-                    <h4>{{ profile.city }}</h4>
-                </div>
-                <div class="p-3 bg-success text-center skill-block">
-                    <h6><i class="fas fa-2x fa-city"></i></h6>
-                    <br>
-                    <h4>{{ profile.zip_code }}</h4>
-                </div>
-                <div class="p-3 bg-warning text-center skill-block">
-                    <h6><i class="fas fa-2x fa-phone"></i></h6>
-                    <br>
-                    <h4>{{ profile.phone }}</h4>
-                </div>
-                <div class="p-3 bg-danger text-center skill-block">
-                    <h6><i class="fas fa-2x fa-globe"></i></h6>
-                    <br>
-                    <h4>{{ profile.country }}</h4>
-                </div>
-            </div>
-
-            <div class="p-3 bg-black text-white date_inscr">
-                <h6>Inscrit depuis le : {{ user.date_joined|date:"d/m/Y" }}</h6>
-            </div>
-
-        </div>
+        {% endif %}
+        <a href="{% url 'edit_profile' %}">
+            <button class="btn updt-profile btn-success fs-5">Modifier mon profile</button>
+        </a>
     </div>
-    {% endif %}
-    <a href="{% url 'edit_profile' %}">
-        <button class="btn updt-profile btn-success fs-5">Modifier mon profile</button>
-    </a>
-</div>
 
 
 
-{% comment %}
+    {% comment %}
 <div class="title text-center mb-5">
     <h1>Mes infos</h1>
 </div>

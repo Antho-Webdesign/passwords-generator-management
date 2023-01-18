@@ -1,17 +1,13 @@
-from genericpath import exists
-import random
 from django.contrib.auth import get_user_model, logout, login, authenticate
-from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Profile
-
 
 User = get_user_model()
 
 
 # Create your views here.
 def signup(request):
-
     if request.method == "POST":
         # traiter le formulaire
         username = request.POST.get("username")
@@ -32,6 +28,7 @@ def signup(request):
             }
             return render(request, 'accounts/signup.html', msg)
     return render(request, 'accounts/signup.html')
+
 
 def login_user(request):
     if request.method == "POST":
@@ -56,6 +53,12 @@ def profile(request):
     context = {
         'profile': profile,
     }
+    if request.method == "POST":
+        # traiter le formulaire
+        image = request.FILES.get("image")
+        profile.image = image
+        profile.save()
+        return redirect('profile')
     return render(request, 'accounts/profile.html', context)
 
 
@@ -107,12 +110,14 @@ def password_reset_form(request):
 
     return render(request, 'accounts/registration/password_reset_form.html')
 
+
 def password_reset_form_done(request):
     return render(request, 'accounts/registration/password_reset_done.html')
+
 
 def password_reset_confirm(request):
     return render(request, 'accounts/registration/password_reset_confirm.html')
 
+
 def password_reset_complete(request):
     return render(request, 'accounts/registration/password_reset_complete.html')
-
