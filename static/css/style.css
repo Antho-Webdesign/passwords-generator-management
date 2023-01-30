@@ -241,3 +241,14 @@ fieldset {
 .navbar > ul:nth-child(1) > li:nth-child(3) {
   margin-right: 80px !important;
 }
+
+
+/* Élément | http://127.0.0.1:8000/profile/ */
+
+.btn-updt-img {
+  display: flex;
+  justify-content: center;
+  margin: 30px auto;
+  background: darkorange;
+  font-weight: bolder;
+}
